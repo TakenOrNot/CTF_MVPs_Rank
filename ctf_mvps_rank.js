@@ -35,17 +35,12 @@
     $("#mvprank").click(function (){
         console.log("Rank clicked");
         
-        jQuery.fn.justtext = function() {
-  
-            return $(this)	.clone()
-                    .children()
-                    .remove()
-                    .end()
-                    .text();
+        
+        
+    });
 
-        };
-        
-        
+    
+    function calcmvps () {
         parray = [];
         var data = {};
         $( "#scorecontainer .item" ).each(function( index ) {
@@ -88,10 +83,9 @@
         sortedarr = parray.sort(function(obj1, obj2) {
             // Ascending:
             return obj1.pscore - obj2.pscore;
-        }).reverse();
-        console.log(sortedarr);
-    });
-
+        }).reverse();    
+        
+    }
     
     SWAM.on ( 'gamePrep', function (){
         
