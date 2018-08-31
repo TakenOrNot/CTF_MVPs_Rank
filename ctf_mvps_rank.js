@@ -85,11 +85,11 @@
             console.log( index + " score: " + data.pscore );
             parray.push(data);
         });
-        parray.sort(function(obj1, obj2) {
+        sortedarr = parray.sort(function(obj1, obj2) {
             // Ascending:
             return obj1.pscore - obj2.pscore;
         }).reverse();
-        
+        console.log(sortedarr);
     });
 
     
