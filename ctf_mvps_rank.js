@@ -35,7 +35,7 @@
     $("#mvprank").click(function (){
         console.log("Rank clicked");
         
-        
+        calcmvps ()
         
     });
 
