@@ -32,7 +32,7 @@
     
     $('body').append ("<div id='mvprankcontainer' style='display: none;'><div id='mvprank' style='display: block; position: absolute;left: 50%;margin: 0px 0px 0px -125px;bottom: 4px;width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Rank</div></div>");
 
-    $("#sf").click(function (){
+    $("#mvprank").click(function (){
         console.log("Rank clicked");
         
         jQuery.fn.justtext = function() {
@@ -94,9 +94,8 @@
 
     
     SWAM.on ( 'gamePrep', function (){
-        window.osf = config.scalingFactor;
-        console.log("gameprep osf =" + osf);
-        $("#sfcontainer").css({display: "none"});
+        
+        $("#mvprankcontainer").css({display: "none"});
     });
     
     
@@ -119,7 +118,7 @@
             
         }
         
-    }
+    
     
     function onMatchStarted () {
         checkspecdelay = 10000;
