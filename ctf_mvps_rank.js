@@ -13,6 +13,13 @@
         SWAM.on ( 'keydown', onKeydown );
         // TODO on CTF match started, wait 10 sec and check if we are in spec, if so lauch idletime, and if stayalive = true, launch also the countdown
         SWAM.on ( 'CTF_MatchStarted', onMatchStarted );
+        
+        $("#mvprank").click(function (){
+            console.log("Rank clicked");
+
+            calcmvps ()
+
+        });
     }
     
     SWAM.on ( 'gameLoaded', init );
@@ -32,12 +39,7 @@
     
     $('body').append ("<div id='mvprankcontainer' style='display: none;'><div id='mvprank' style='display: block; position: absolute;left: 50%;margin: 0px 0px 0px -125px;bottom: 4px;width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Rank</div></div>");
 
-    $("#mvprank").click(function (){
-        console.log("Rank clicked");
-        
-        calcmvps ()
-        
-    });
+    
 
     
     function calcmvps () {
