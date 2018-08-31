@@ -84,7 +84,7 @@
             // Ascending:
             return obj1.pscore - obj2.pscore;
         }).reverse();    
-        
+        console.log(sortedarr);
     }
     
     SWAM.on ( 'gamePrep', function (){
