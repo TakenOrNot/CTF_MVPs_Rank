@@ -86,6 +86,10 @@
             }
             
             pkd = (pkills / pdeaths);
+            // if k/d < 1, make it negative so a player with negative k/d and a cap has a lower score
+            if (pkd < 1) { 
+                pkd = -(1 - pkd); 
+            }
             
             // TODO : use bounty somewhere
             // NOTE : probably use something like (bounty * k/d) to avoid meaningless bounty of kill-less players
