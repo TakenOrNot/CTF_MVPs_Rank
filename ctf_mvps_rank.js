@@ -45,10 +45,10 @@
     function calcmvps () {
         parray = [];
         var data = {};
-        tbluescoresarray = [];
-        tredscoresarray = [];
-        tblueparray = [];
-        tredparray = [];
+        // tbluescoresarray = [];
+        // tredscoresarray = [];
+        // tblueparray = [];
+        // tredparray = [];
         
         tbluearray = [];
         tredarray = [];
@@ -133,28 +133,30 @@
         }).reverse();    
         console.log(sortedarr);
         
-        
+        // TODO : substract idle (spectating ones for now, hard to know who s idle) players scores from teamscore
         
         console.log("tbluescore : " + tbluescore + " tredscore : " + tredscore);
         if (tbluescore > tredscore) {
             scorediff = (tbluescore - tredscore);
             console.log("Blue stronger, score diff : " + scorediff); 
-            var findClosest = tbluescoresarray.reduce(function(prev, curr, index) {
-                console.log(tblueparray[index]);
-                return (Math.abs(curr - scorediff) < Math.abs(prev - scorediff) ? curr + " i: " + tblueparray[index] : prev + " i: " + tblueparray[index]);
+            var findClosest = tbluearray.reduce(function(prev, curr, index) {
+                console.log(curr.name + " " + curr.score);
+                return (Math.abs(curr.score - scorediff) < Math.abs(prev - scorediff) ? curr.score : prev);
             });
             
-            shouldswitch = findClosest;
-            console.log("Should switch to red : " + shouldswitch)
+            shouldswitch = findClosest.name + " " + findClosest.score;
+            // TODO : check if a switch wouldnt unbalance the game the other way around
+            console.log("Should switch to red : " + shouldswitch + "(blueteam score would be : " + (tbluescore - findClosest.score) + ", redteam score would be:" + (tredscore + findClosest.score) + ")");
         } else if (tbluescore < tredscore) {
             scorediff = (tredscore - tbluescore);
             console.log("Red stronger, score diff : " + scorediff);
-            var findClosest = tredscoresarray.reduce(function(prev, curr, index) {
-                console.log(tredparray[index]);
-                return (Math.abs(curr - scorediff) < Math.abs(prev - scorediff) ? curr + " i: " + tredparray[index] : prev + " i: " + tredparray[index]);
+            var findClosest = tredarray.reduce(function(prev, curr, index) {
+                console.log(curr.name + " " + curr.score);
+                return (Math.abs(curr.score - scorediff) < Math.abs(prev - scorediff) ? curr.score : prev);
             });
-            shouldswitch = findClosest;
-            console.log("Should switch to blue : " + shouldswitch)
+            shouldswitch = findClosest.name + " " + findClosest.score;
+            // TODO : check if a switch wouldnt unbalance the game the other way around
+            console.log("Should switch to blue : " + shouldswitch+ "(redteam score would be : " + (tredscore - findClosest.score) + ", blueteam score would be:" + (tbluescore + findClosest.score) + ")");
         }
         
         
