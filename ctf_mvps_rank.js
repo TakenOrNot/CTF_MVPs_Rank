@@ -49,6 +49,10 @@
         tredscoresarray = [];
         tblueparray = [];
         tredparray = [];
+        
+        tbluearray = [];
+        tredarray = [];
+        
         tbluecount = 0;
         tbluescore = 0;
         tredcount = 0;
@@ -102,12 +106,18 @@
                 tbluescore = tbluescore + data.pscore;
                 tbluescoresarray.push(data.pscore);
                 tblueparray.push(data.plyrname);
+                
+                tbluearray.push({"name" : data.plyrname, "score" : data.pscore});
+                
             } else {
                 console.log('team 2 red');
                 tredcount = tredcount + 1;
                 tredscore = tredscore + data.pscore;
                 tredscoresarray.push(data.pscore);
                 tredparray.push(data.plyrname);
+                
+                tredarray.push({"name" : data.plyrname, "score" : data.pscore});
+                
             }
             
             
