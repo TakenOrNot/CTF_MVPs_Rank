@@ -45,13 +45,26 @@
     function calcmvps () {
         parray = [];
         var data = {};
+        tbluescoresarray = [];
+        tredscoresarray = [];
+        tblueparray = [];
+        tredparray = [];
+        tbluecount = 0;
+        tbluescore = 0;
+        tredcount = 0;
+        tredscore = 0;
+        
         $( "#scorecontainer .item" ).each(function( index ) {
+        
             var data = {};
             console.log( index + ": " + $( this ).text() );
             data.plyrid = $( this ).attr('player-id');
             
             data.plyrname = $( this ).children( ".name" ).children( ".player" ).text();
+            
             console.log( index + " plyrname: " + data.plyrname);
+            
+            
             
             pkills = $( this ).children( ".kills" ).text();
             pdeaths = $( this ).children( ".deaths" ).text();
@@ -78,16 +91,63 @@
             // NOTE : probably use something like (bounty * k/d) to avoid meaningless bounty of kill-less players
             data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
             
+            
+            if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
+                console.log('team 1 blue');
+                tbluecount = tbluecount + 1;
+                tbluescore = tbluescore + data.pscore;
+                tbluescoresarray.push(data.pscore);
+                tblueparray.push(data.plyrname);
+            } else {
+                console.log('team 2 red');
+                tredcount = tredcount + 1;
+                tredscore = tredscore + data.pscore;
+                tredscoresarray.push(data.pscore);
+                tredparray.push(data.plyrname);
+            }
+            
+            
+            
             console.log( index + " kd: " + pkd );
             console.log( index + " score: " + data.pscore );
             parray.push(data);
         });
+        
         sortedarr = parray.sort(function(obj1, obj2) {
             // Ascending:
             return obj1.pscore - obj2.pscore;
         }).reverse();    
         console.log(sortedarr);
-    }
+        
+        
+        
+        console.log("tbluescore : " + tbluescore + " tredscore : " + tredscore);
+        if (tbluescore > tredscore) {
+            scorediff = (tbluescore - tredscore);
+            console.log("Blue stronger, score diff : " + scorediff); 
+            var findClosest = tbluescoresarray.reduce(function(prev, curr, index) {
+                console.log(tblueparray[index]);
+                return (Math.abs(curr - scorediff) < Math.abs(prev - scorediff) ? curr + " i: " + tblueparray[index] : prev + " i: " + tblueparray[index]);
+            });
+            
+            shouldswitch = findClosest;
+            console.log("Should switch to red : " + shouldswitch)
+        } else if (tbluescore < tredscore) {
+            scorediff = (tredscore - tbluescore);
+            console.log("Red stronger, score diff : " + scorediff);
+            var findClosest = tredscoresarray.reduce(function(prev, curr, index) {
+                console.log(tredparray[index]);
+                return (Math.abs(curr - scorediff) < Math.abs(prev - scorediff) ? curr + " i: " + tredparray[index] : prev + " i: " + tredparray[index]);
+            });
+            shouldswitch = findClosest;
+            console.log("Should switch to blue : " + shouldswitch)
+        }
+        
+        
+        
+        
+        
+    };
     
     SWAM.on ( 'gamePrep', function (){
         
