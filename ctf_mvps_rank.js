@@ -128,6 +128,7 @@
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
                 console.log('team 1 blue');
+                data.pteam = 'team-1';
                 tbluecount = tbluecount + 1;
                 tbluescore = tbluescore + data.pscore;
                 tbluescoresarray.push(data.pscore);
@@ -137,6 +138,7 @@
                 
             } else {
                 console.log('team 2 red');
+                data.pteam = 'team-2';
                 tredcount = tredcount + 1;
                 tredscore = tredscore + data.pscore;
                 tredscoresarray.push(data.pscore);
@@ -254,7 +256,7 @@
         
         $("#mvprankplayerlist").html('');
         $.each(sortedarr, function( index, value ) {
-            $("#mvprankplayerlist").append("<li>" + value.plyrname + "<div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
+            $("#mvprankplayerlist").append("<li>" + index + ".<div class='" + value.pteam + "'> " + value.plyrname + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         
     };
