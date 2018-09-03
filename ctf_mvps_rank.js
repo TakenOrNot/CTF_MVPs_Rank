@@ -16,6 +16,7 @@
         $("#mvprank").click(function (){
             console.log("Rank clicked");
             $("#scorecontainer").hide();
+            $( "#scoretable" ).hide();
             $("scoremvp").hide();
             $("#defaultscoreboard").show();
             
@@ -26,7 +27,9 @@
         
         $("#defaultscoreboard").click(function (){
             //console.log("defaultscoreboard clicked");
+            $(this).hide();
             $("#scorecontainer").show();
+            $( "#scoretable" ).show();
             $("scoremvp").show();
         });
     }
