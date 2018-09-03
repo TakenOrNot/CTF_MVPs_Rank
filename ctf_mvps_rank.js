@@ -19,7 +19,7 @@
             $( "#scoretable" ).hide();
             $("#scoremvp").hide();
             $("#defaultscoreboardbtn").show();
-            $("#mvprankcontainer").show();
+            $("#mvprankcontainer").css({display: "block"});
             
             calcmvps ()
 
@@ -28,7 +28,7 @@
         $("#defaultscoreboard").click(function (){
             //console.log("defaultscoreboard clicked");
             $(this).hide();
-            $("#mvprankcontainer").hide();
+            $("#mvprankcontainer").css({display: "none"});
             $("#scorecontainer").show();
             $( "#scoretable" ).show();
             $("#scoremvp").show();
