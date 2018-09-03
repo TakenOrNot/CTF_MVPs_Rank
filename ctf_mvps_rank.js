@@ -19,7 +19,7 @@
             $( "#scoretable" ).hide();
             $("scoremvp").hide();
             $("#defaultscoreboard").show();
-            
+            $("mvprankcontainer").show();
             
             calcmvps ()
 
@@ -28,6 +28,7 @@
         $("#defaultscoreboard").click(function (){
             //console.log("defaultscoreboard clicked");
             $(this).hide();
+            $("mvprankcontainer").hide();
             $("#scorecontainer").show();
             $( "#scoretable" ).show();
             $("scoremvp").show();
@@ -49,9 +50,9 @@
     
     /* GUI */
     
-    $( "#scoredetailed .header" ).append("<div id='mvprankcontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboard' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
+    $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboard' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;'>Hello world</div>" );
     
     
 
