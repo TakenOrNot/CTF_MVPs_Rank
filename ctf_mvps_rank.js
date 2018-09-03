@@ -25,7 +25,7 @@
 
         });
         
-        $("#defaultscoreboard").click(function (){
+        $("#defaultscoreboardbtn").click(function (){
             //console.log("defaultscoreboard clicked");
             $(this).hide();
             $("#mvprankcontainer").css({display: "none"});
