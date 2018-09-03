@@ -37,7 +37,7 @@
     
     /* GUI */
     
-    $('body').append ("<div id='mvprankcontainer' style='display: none;'><div id='mvprank' style='display: block; position: absolute;left: 50%;margin: 0px 0px 0px -125px;bottom: 4px;width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Rank</div></div>");
+    $( "#scoredetailed .header" ).append("<div id='mvprankcontainer' style='position: absolute;right: 10px; top:10px;'><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Rank</div></div>");
 
     
     
@@ -246,45 +246,20 @@
     
     SWAM.on ( 'gamePrep', function (){
         
-        $("#mvprankcontainer").css({display: "none"});
+        //$("#mvprankcontainer").css({display: "none"});
     });
     
     
     
-    function onKeydown ( event ) {
-        
-        if ( event.originalEvent.key === 'v' ) { //note: This is not reliable to know if player is actually spectating
 
-            event.stopImmediatePropagation ();
-            
-            // game.spectatingID is not reliable, as it is null at first when spectating, until we spectate another player      
-            checkspecdelay = 2000;
-            checkspec(checkspecdelay)
-               
-            
-        }
-        
-            
-               
-            
-        }
         
     
     
     function onMatchStarted () {
-        checkspecdelay = 10000;
-        checkspec(checkspecdelay)
+        // checkspecdelay = 10000;
+        // checkspec(checkspecdelay)
     }
-    
-    function checkspec(checkspecdelay){
-        window.setTimeout(function () {
-                    if( $('#btnFreeSpectator').css('display') == 'block' ) {
-                        console.log("v key pressed, show sf");
-                        $("#mvprankcontainer").css({display: "block"});
-                        
-                    }
-                },checkspecdelay); 
-    }
+
 
     /* REGISTER */
 
