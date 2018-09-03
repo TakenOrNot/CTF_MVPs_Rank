@@ -17,9 +17,9 @@
             console.log("Rank clicked");
             $("#scorecontainer").hide();
             $( "#scoretable" ).hide();
-            $("scoremvp").hide();
+            $("#scoremvp").hide();
             $("#defaultscoreboardbtn").show();
-            $("mvprankcontainer").css({display: "block"});
+            $("#mvprankcontainer").show();
             
             calcmvps ()
 
@@ -28,10 +28,10 @@
         $("#defaultscoreboard").click(function (){
             //console.log("defaultscoreboard clicked");
             $(this).hide();
-            $("mvprankcontainer").css({display: "none"});
+            $("#mvprankcontainer").hide();
             $("#scorecontainer").show();
             $( "#scoretable" ).show();
-            $("scoremvp").show();
+            $("#scoremvp").show();
         });
     }
     
