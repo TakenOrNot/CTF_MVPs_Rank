@@ -10,15 +10,24 @@
     }
 
     function initEvents () {
-        // SWAM.on ( 'keydown', onKeydown );
-        // TODO on CTF match started, wait 10 sec and check if we are in spec, if so lauch idletime, and if stayalive = true, launch also the countdown
+        
         SWAM.on ( 'CTF_MatchStarted', onMatchStarted );
         
         $("#mvprank").click(function (){
             console.log("Rank clicked");
-
+            $("#scorecontainer").hide();
+            $("scoremvp").hide();
+            $("#defaultscoreboard").show();
+            
+            
             calcmvps ()
 
+        });
+        
+        $("#defaultscoreboard").click(function (){
+            //console.log("defaultscoreboard clicked");
+            $("#scorecontainer").show();
+            $("scoremvp").show();
         });
     }
     
@@ -37,7 +46,7 @@
     
     /* GUI */
     
-    $( "#scoredetailed .header" ).append("<div id='mvprankcontainer' style='position: absolute;right: 10px; top:10px;'><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Rank</div></div>");
+    $( "#scoredetailed .header" ).append("<div id='mvprankcontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboard' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
     
     
