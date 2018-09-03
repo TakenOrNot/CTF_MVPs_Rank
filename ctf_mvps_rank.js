@@ -10,7 +10,7 @@
     }
 
     function initEvents () {
-        SWAM.on ( 'keydown', onKeydown );
+        // SWAM.on ( 'keydown', onKeydown );
         // TODO on CTF match started, wait 10 sec and check if we are in spec, if so lauch idletime, and if stayalive = true, launch also the countdown
         SWAM.on ( 'CTF_MatchStarted', onMatchStarted );
         
