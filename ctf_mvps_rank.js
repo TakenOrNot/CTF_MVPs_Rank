@@ -256,7 +256,7 @@
         
         $("#mvprankplayerlist").html('');
         $.each(sortedarr, function( index, value ) {
-            $("#mvprankplayerlist").append("<li class='item'>" + (index + 1) + ". <div class='name'><div class='" + value.pteam + "'> " + value.plyrname + "</div></div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
+            $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='" + value.pteam + "'> " + value.plyrname + "</div></div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         
     };
