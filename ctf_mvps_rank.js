@@ -315,6 +315,17 @@
             return lowesttbluescore;
         }).reverse();
         
+        lowesttredscore = tredscorelog.sort(function(obj1, obj2) {
+            // Ascending:
+            lowesttredscore = obj1.tredscorelog - obj2.tredscorelog;
+            return lowesttredscore;
+        });
+        lowesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
+            // Ascending:
+            lowesttbluescore = obj1.tbluescorelog - obj2.tbluescorelog;
+            return lowesttbluescore;
+        });
+        
         if (highesttredscore > highesttbluescore){
             highesttscore = highesttredscore;
         } else {
