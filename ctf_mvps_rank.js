@@ -306,20 +306,23 @@
         
         highesttredscore = tredscorelog.sort(function(obj1, obj2) {
             // Ascending:
-            return obj1.tredscorelog - obj2.tredscorelog;
+            return obj1 - obj2;
         }).reverse();
+        
+        
+        
         highesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
-            return obj1.tbluescorelog - obj2.tbluescorelog;
+            return obj1 - obj2;
         }).reverse();
         
         lowesttredscore = tredscorelog.sort(function(obj1, obj2) {
             // Ascending:
-            return obj1.tredscorelog - obj2.tredscorelog;
+            return obj1 - obj2;
         });
         lowesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
-            return obj1.tbluescorelog - obj2.tbluescorelog;
+            return obj1 - obj2;
         });
         
         if (highesttredscore > highesttbluescore){
