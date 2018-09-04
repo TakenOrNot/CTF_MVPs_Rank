@@ -297,8 +297,8 @@
         // TODO : get highest and lowest players scores and normalise on a 0 to 100 scale
         // then send normalised tscores to chart
         
-        data.tredscorelog = tredscore;
-        data.tbluescorelog = tbluescore;
+        data.tredscorelog = (tredscore/tredcount);
+        data.tbluescorelog = (tbluescore/tbluecount);
         tredscorelog.push(data.tredscorelog);
         tbluescorelog.push(data.tbluescorelog);
         ctscorelogarray.push(ctscorelog);
@@ -354,8 +354,8 @@
 							gridLines: gridlines,
 							ticks: {
 								min: -5000,
-								max: 50000,
-								stepSize: 500
+								max: 10000,
+								stepSize: 200
 							}
 						}]
 					}
