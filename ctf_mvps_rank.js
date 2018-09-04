@@ -70,8 +70,8 @@
     $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul><div id='teamscores'></div><div id='advice'></div><div id='chartbtn' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Chart</div></div>" );
     
     
-    tredscorelog[];
-    tbluescorelog[];
+    tredscorelog = [];
+    tbluescorelog = [];
     ctscorelog = 0; 
     function calcmvps () {
         parray = [];
