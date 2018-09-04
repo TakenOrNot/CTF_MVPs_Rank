@@ -67,7 +67,7 @@
     
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul><div id='teamscores'></div><div id='advice'></div><canvas id='chartcanvas' style='display: block; width: 680px; height: 385px;' width='680' height='385' class='chartjs-render-monitor'></canvas><div id='chartbtn' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Chart</div></div>" );
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul><div id='teamscores'></div><div id='advice'></div><div id='chartbtn' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Chart</div></div>" );
     
     
 
@@ -290,87 +290,73 @@
     
     
     function chartstats (){
-        var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		var config = {
-			type: 'line',
-			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-				datasets: [{
-					label: 'My First dataset',
-					backgroundColor: window.chartColors.red,
-					borderColor: window.chartColors.red,
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor()
-					],
-					fill: false,
-				}, {
-					label: 'My Second dataset',
-					fill: false,
-					backgroundColor: window.chartColors.blue,
-					borderColor: window.chartColors.blue,
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor()
-					],
-				}]
-			},
-			options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Chart.js Line Chart'
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Month'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Value'
-						}
+        
+        function createConfig(gridlines, title) {
+			return {
+				type: 'line',
+				data: {
+					labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+					datasets: [{
+						label: 'My First dataset',
+						backgroundColor: window.chartColors.red,
+						borderColor: window.chartColors.red,
+						data: [10, 30, 39, 20, 25, 34, 0],
+						fill: false,
+					}, {
+						label: 'My Second dataset',
+						fill: false,
+						backgroundColor: window.chartColors.blue,
+						borderColor: window.chartColors.blue,
+						data: [18, 33, 22, 19, 11, 39, 30],
 					}]
+				},
+				options: {
+					responsive: true,
+					title: {
+						display: true,
+						text: title
+					},
+					scales: {
+						xAxes: [{
+							gridLines: gridlines
+						}],
+						yAxes: [{
+							gridLines: gridlines,
+							ticks: {
+								min: 0,
+								max: 100,
+								stepSize: 10
+							}
+						}]
+					}
 				}
-			}
+			};
+		}
+        
+        
+        
+        
+        var container = document.querySelector('#mvprankcontainer');
+
+			[{
+				title: 'Display: true',
+				gridLines: {
+					display: true
+				}
+			}].forEach(function(details) {
+				var div = document.createElement('div');
+				div.classList.add('chart-container');
+
+				var canvas = document.createElement('canvas');
+				div.appendChild(canvas);
+				container.appendChild(div);
+
+				var ctx = canvas.getContext('2d');
+				var config = createConfig(details.gridLines, details.title);
+				new Chart(ctx, config);
+			});
 		};
 
-		
-
-		var colorNames = Object.keys(window.chartColors);
-		
-        var ctx = document.getElementById('chartcanvas').getContext('2d');
-        window.myLine = new Chart(ctx, config);
-		
-
-		
-        
-        
-        
-        
     }
     
     SWAM.on ( 'gamePrep', function (){
