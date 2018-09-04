@@ -353,8 +353,8 @@
 						yAxes: [{
 							gridLines: gridlines,
 							ticks: {
-								min: -5000,
-								max: 10000,
+								min: -3000,
+								max: 8000,
 								stepSize: 200
 							}
 						}]
