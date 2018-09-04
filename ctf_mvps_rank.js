@@ -317,13 +317,11 @@
         
         lowesttredscore = tredscorelog.sort(function(obj1, obj2) {
             // Ascending:
-            lowesttredscore = obj1.tredscorelog - obj2.tredscorelog;
-            return lowesttredscore;
+            return obj1.tredscorelog - obj2.tredscorelog;
         });
         lowesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
-            lowesttbluescore = obj1.tbluescorelog - obj2.tbluescorelog;
-            return lowesttbluescore;
+            return obj1.tbluescorelog - obj2.tbluescorelog;
         });
         
         if (highesttredscore > highesttbluescore){
