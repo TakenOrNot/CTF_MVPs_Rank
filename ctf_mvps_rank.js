@@ -112,7 +112,7 @@
             
             // TODO: use cap/death ratio instead of caps
             
-            pcd = (pcaps / pdeaths);
+            pcd = (pcaps / pdeaths); 
             data.pcd = pcd;
             //if (pcd < 1) { 
             //    pcd = -(1 - pcd); 
