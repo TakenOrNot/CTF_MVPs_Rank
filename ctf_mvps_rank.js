@@ -124,7 +124,10 @@
             
             
             //data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
-            data.pscore = ((pcapscore * 1000) * pkd) + (pkd * 100) ;
+            
+            
+            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100)); 
+            
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
                 console.log('team 1 blue');
@@ -195,6 +198,8 @@
             return ansc;
         }
         
+        shouldswitchsentence = '';
+        shouldswitch = '';
         
         if (tbluescore > tredscore) {
             scorediff = (tbluescore - tredscore);
