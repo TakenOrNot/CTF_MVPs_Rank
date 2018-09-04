@@ -39,8 +39,9 @@
         });
         
         $("#chartbtn").click(function (){
-            var x = setInterval(calcmvps, 60000); 
-            
+            if (!calcinterval){
+                var calcinterval = setInterval(calcmvps, 60000); 
+            }
             
         });
         
