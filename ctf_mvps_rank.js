@@ -52,7 +52,7 @@
     
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul></div>" );
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul><div id='teamscores'></div><div id='advice'></div></div>" );
     
     
 
@@ -216,7 +216,8 @@
                 nscorediff = (ntredscore - ntbluescore);
             }
             
-            console.log("Should switch to red : " + tblueparray[shouldswitch] + " (blueteam score : " + tbluescore + " => " +  ntbluescore + ", redteam score : " + tredscore + " => " + ntredscore + " scorediff : " + scorediff + " => " + nscorediff + " )");
+            shouldswitchsentence = "Should switch to red : " + tblueparray[shouldswitch] + " (blueteam score : " + tbluescore + " => " +  ntbluescore + ", redteam score : " + tredscore + " => " + ntredscore + " scorediff : " + scorediff + " => " + nscorediff + " )";
+            console.log(shouldswitchsentence);
             
             
             if (nscorediff > scorediff) {
@@ -243,7 +244,8 @@
                 nscorediff = (ntredscore - ntbluescore);
             }
             
-            console.log("Should switch to blue : " + tredparray[shouldswitch] + " (redteam score : " + tredscore + " => " +  ntredscore + ", blueteam score : " + tbluescore + " => " + ntbluescore + " scorediff : " + scorediff + " => " + nscorediff + " )");
+            shouldswitchsentence = "Should switch to blue : " + tredparray[shouldswitch] + " (redteam score : " + tredscore + " => " +  ntredscore + ", blueteam score : " + tbluescore + " => " + ntbluescore + " scorediff : " + scorediff + " => " + nscorediff + " )"
+            console.log(shouldswitchsentence);
             
             
             
@@ -258,7 +260,10 @@
         $.each(sortedarr, function( index, value ) {
             $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
-        
+        $("#teamscores").html('');
+        $("#teamscores").html("Blue : " + tbluescore + " Red:" tredscore);
+        $("#advice").html('');
+        $("#advice").html(shouldswitchsentence);
     };
     
     SWAM.on ( 'gamePrep', function (){
