@@ -297,20 +297,50 @@
         // TODO : get highest and lowest players scores and normalise on a 0 to 100 scale
         // then send normalised tscores to chart
         
+        
+        
         data.tredscorelog = (tredscore/tredcount);
         data.tbluescorelog = (tbluescore/tbluecount);
         tredscorelog.push(data.tredscorelog);
         tbluescorelog.push(data.tbluescorelog);
+        
+        highesttredscore = tredscorelog.sort(function(obj1, obj2) {
+            // Ascending:
+            lowesttredscore = obj1.tredscorelog - obj2.tredscorelog;
+            return lowesttredscore;
+        }).reverse();
+        highesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
+            // Ascending:
+            lowesttbluescore = obj1.tbluescorelog - obj2.tbluescorelog;
+            return lowesttbluescore;
+        }).reverse();
+        
+        if (highesttredscore > highesttbluescore){
+            highesttscore = highesttredscore;
+        } else {
+            highesttscore = highesttbluescore;
+        }
+        
+        if (lowesttredscore < lowesttbluescore){
+            lowesttscore = lowesttredscore;
+        } else {
+            lowesttscore = lowesttbluescore;
+        }
+        
+        chartstep = 200;
+        lowesttscore = (lowesttscore - chartstep);
+        highesttscore = (highesttscore + chartstep);
+        
         ctscorelogarray.push(ctscorelog);
         
         $('.chart-container').remove();
-        chartstats(ctscorelogarray,tredscorelog,tbluescorelog);
+        chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
         
         ctscorelog = ctscorelog + 1;
     };
     
     
-    function chartstats (ctscorelogarray,tredscorelog,tbluescorelog){
+    function chartstats (ctscorelogarray,tredscorelog,tbluescorelog,highesttscore, lowesttscore, chartstep){
         console.log("chart : " + tredscorelog + " & " + tbluescorelog)
         window.chartColors = {
             red: 'rgb(255, 99, 132)',
@@ -353,9 +383,9 @@
 						yAxes: [{
 							gridLines: gridlines,
 							ticks: {
-								min: -3000,
-								max: 8000,
-								stepSize: 200
+								min: lowesttscore,
+								max: highesttscore,
+								stepSize: chartstep
 							}
 						}]
 					}
