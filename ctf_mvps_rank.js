@@ -39,7 +39,9 @@
         });
         
         $("#chartbtn").click(function (){
-            chartstats();
+            var x = setTimeout(calcmvps, 60000); 
+            
+            
         });
         
     }
@@ -291,7 +293,8 @@
         $("#advice").html(shouldswitchsentence);
         
         
-        
+        // TODO : get highest and lowest players scores and normalise on a 0 to 100 scale
+        // then send normalised tscores to chart
         
         data.tredscorelog = tredscore;
         data.tbluescorelog = tbluescore;
@@ -383,6 +386,7 @@
 			});
 		};
 
+    
     
     
     SWAM.on ( 'gamePrep', function (){
