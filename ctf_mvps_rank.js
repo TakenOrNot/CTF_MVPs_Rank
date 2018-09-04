@@ -289,15 +289,16 @@
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
         
-        
-        tredscorelog.push(tredscore);
-        tbluescorelog.push(tbluescore);
+        data.tredscorelog = tredscore;
+        data.tbluescorelog = tbluescore;
+        tredscorelog.push(data.tredscorelog);
+        tbluescorelog.push(data.tbluescorelog);
         ctscorelogarray.push(ctscorelog);
         ctscorelog = ctscorelog + 1;
     };
     
     
-    function chartstats (){
+    function chartstats (ctscorelogarray,tredscorelog,tbluescorelog){
         window.chartColors = {
             red: 'rgb(255, 99, 132)',
             orange: 'rgb(255, 159, 64)',
