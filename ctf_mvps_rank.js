@@ -52,7 +52,7 @@
     
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul><div id='teamscores'></div><div id='advice'></div></div>" );
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd'>KD</div><div class='cd'>CD</div><div class='score'>Score</div></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul><div id='teamscores'></div><div id='advice'></div></div>" );
     
     
 
@@ -255,6 +255,7 @@
             
             
             if (nscorediff > scorediff) {
+                // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
             }
             
