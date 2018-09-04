@@ -350,7 +350,7 @@
     
     
     function chartstats (ctscorelogarray,tredscorelog,tbluescorelog,highesttscore, lowesttscore, chartstep){
-        console.log("chart : " + tredscorelog + " & " + tbluescorelog)
+        console.log("chart : " + tredscorelog + " & " + tbluescorelog);
         window.chartColors = {
             red: 'rgb(255, 99, 132)',
             orange: 'rgb(255, 159, 64)',
@@ -361,6 +361,7 @@
             grey: 'rgb(201, 203, 207)'
         };
         function createConfig(gridlines, title) {
+            console.log("highesttscore : " + highesttscore + " lowesttscore : " + lowesttscore + " chartstep : " + chartstep);
 			return {
 				type: 'line',
 				data: {
