@@ -339,6 +339,9 @@
         lowesttscore = lowesttscore - chartstep;
         highesttscore = highesttscore + chartstep;
         
+        
+        console.log("calc highesttscore : " + highesttscore + " calc lowesttscore : " + lowesttscore + " chartstep : " + chartstep);
+        
         ctscorelogarray.push(ctscorelog);
         
         $('.chart-container').remove();
