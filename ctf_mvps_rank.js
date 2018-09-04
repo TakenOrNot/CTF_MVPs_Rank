@@ -221,7 +221,7 @@
                 nscorediff = (ntredscore - ntbluescore);
             }
             
-            shouldswitchsentence = "Should switch to red : " + tblueparray[shouldswitch] + " (blueteam score : " + tbluescore + " => " +  ntbluescore + ", redteam score : " + tredscore + " => " + ntredscore + " scorediff : " + scorediff + " => " + nscorediff + " )";
+            shouldswitchsentence = "Should switch to Red : " + tblueparray[shouldswitch] + " (Blue => " +  ntbluescore + ", Red => " + ntredscore + " scorediff : " + scorediff + " => " + nscorediff + " )";
             console.log(shouldswitchsentence);
             
             
@@ -249,7 +249,7 @@
                 nscorediff = (ntredscore - ntbluescore);
             }
             
-            shouldswitchsentence = "Should switch to blue : " + tredparray[shouldswitch] + " (redteam score : " + tredscore + " => " +  ntredscore + ", blueteam score : " + tbluescore + " => " + ntbluescore + " scorediff : " + scorediff + " => " + nscorediff + " )";
+            shouldswitchsentence = "Should switch to Blue : " + tredparray[shouldswitch] + " (Red => " +  ntredscore + ", Blue => " + ntbluescore + " scorediff : " + scorediff + " => " + nscorediff + " )";
             console.log(shouldswitchsentence);
             
             
