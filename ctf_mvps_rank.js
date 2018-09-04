@@ -72,6 +72,7 @@
     
     tredscorelog = [];
     tbluescorelog = [];
+    ctscorelogarray = [];
     ctscorelog = 0; 
     function calcmvps () {
         parray = [];
@@ -290,9 +291,7 @@
         $("#advice").html(shouldswitchsentence);
         
         
-        if (!ctscorelog){
-            ctscorelog = 0;
-        }
+        
         
         data.tredscorelog = tredscore;
         data.tbluescorelog = tbluescore;
