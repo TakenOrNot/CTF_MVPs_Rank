@@ -325,15 +325,15 @@
         });
         
         if (highesttredscore > highesttbluescore){
-            highesttscore = highesttredscore;
+            highesttscore = Math.floor(highesttredscore);
         } else {
-            highesttscore = highesttbluescore;
+            highesttscore = Math.floor(highesttbluescore);
         }
         
         if (lowesttredscore < lowesttbluescore){
-            lowesttscore = lowesttredscore;
+            lowesttscore = Math.floor(lowesttredscore);
         } else {
-            lowesttscore = lowesttbluescore;
+            lowesttscore = Math.floor(lowesttbluescore);
         }
         
         chartstep = 200;
