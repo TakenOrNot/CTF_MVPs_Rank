@@ -15,6 +15,7 @@
         
         $("#mvprank").click(function (){
             console.log("Rank clicked");
+            $('#scoredetailed .spacer').first().hide();
             $("#scorecontainer").hide();
             $( "#scoretable" ).hide();
             $("#scoremvp").hide();
@@ -29,6 +30,7 @@
             //console.log("defaultscoreboard clicked");
             $(this).hide();
             $("#mvprankcontainer").css({display: "none"});
+            $('#scoredetailed .spacer').first().show();
             $("#scorecontainer").show();
             $( "#scoretable" ).show();
             $("#scoremvp").show();
@@ -52,7 +54,7 @@
     
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul><div id='teamscores'></div><div id='advice'></div></div>" );
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div><div class='spacer'></div></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px;'></ul><div id='teamscores'></div><div id='advice'></div></div>" );
     
     
 
