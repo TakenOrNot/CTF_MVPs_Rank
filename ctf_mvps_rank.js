@@ -309,19 +309,28 @@
             return obj1 - obj2;
         }).reverse();
         
+        highesttredscore = highesttredscore[0];
+        
         highesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         }).reverse();
         
+        highesttbluescore = highesttbluescore[0];
+        
         lowesttredscore = tredscorelog.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         });
+        
+        lowesttredscore = lowesttredscore[0];
+        
         lowesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         });
+        
+        lowesttbluescore = lowesttbluescore[0];
         
         if (highesttredscore > highesttbluescore){
             highesttscore = Math.floor(highesttredscore);
