@@ -298,11 +298,16 @@
         tredscorelog.push(data.tredscorelog);
         tbluescorelog.push(data.tbluescorelog);
         ctscorelogarray.push(ctscorelog);
+        
+        
+        chartstats(ctscorelogarray,tredscorelog,tbluescorelog);
+        
         ctscorelog = ctscorelog + 1;
     };
     
     
     function chartstats (ctscorelogarray,tredscorelog,tbluescorelog){
+        console.log("chart : " + tredscorelog + " & " + tbluescorelog)
         window.chartColors = {
             red: 'rgb(255, 99, 132)',
             orange: 'rgb(255, 159, 64)',
