@@ -351,7 +351,7 @@
 							ticks: {
 								min: -10000,
 								max: 10000,
-								stepSize: 10
+								stepSize: 100
 							}
 						}]
 					}
