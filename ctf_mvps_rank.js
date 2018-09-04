@@ -39,7 +39,7 @@
         });
         
         $("#chartbtn").click(function (){
-            var x = setTimeout(calcmvps, 60000); 
+            var x = setInterval(calcmvps, 60000); 
             
             
         });
