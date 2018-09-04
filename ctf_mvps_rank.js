@@ -289,6 +289,11 @@
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
         
+        
+        if (!ctscorelog){
+            ctscorelog = 0;
+        }
+        
         data.tredscorelog = tredscore;
         data.tbluescorelog = tbluescore;
         tredscorelog.push(data.tredscorelog);
