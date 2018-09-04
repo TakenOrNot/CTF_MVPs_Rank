@@ -309,8 +309,6 @@
             return obj1 - obj2;
         }).reverse();
         
-        
-        
         highesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
@@ -338,8 +336,8 @@
         }
         
         chartstep = 200;
-        lowesttscore = (lowesttscore - chartstep);
-        highesttscore = (highesttscore + chartstep);
+        lowesttscore = lowesttscore - chartstep;
+        highesttscore = highesttscore + chartstep;
         
         ctscorelogarray.push(ctscorelog);
         
