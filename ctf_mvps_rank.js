@@ -299,7 +299,7 @@
         tbluescorelog.push(data.tbluescorelog);
         ctscorelogarray.push(ctscorelog);
         
-        
+        $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog);
         
         ctscorelog = ctscorelog + 1;
@@ -323,13 +323,13 @@
 				data: {
 					labels: ctscorelogarray,
 					datasets: [{
-						label: 'My First dataset',
+						label: 'Red',
 						backgroundColor: window.chartColors.red,
 						borderColor: window.chartColors.red,
 						data: tredscorelog,
 						fill: false,
 					}, {
-						label: 'My Second dataset',
+						label: 'Blue',
 						fill: false,
 						backgroundColor: window.chartColors.blue,
 						borderColor: window.chartColors.blue,
@@ -349,8 +349,8 @@
 						yAxes: [{
 							gridLines: gridlines,
 							ticks: {
-								min: 0,
-								max: 100,
+								min: -10000,
+								max: 10000,
 								stepSize: 10
 							}
 						}]
