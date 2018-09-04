@@ -78,7 +78,7 @@
             console.log( index + ": " + $( this ).text() );
             data.plyrid = $( this ).attr('player-id');
             
-            data.plyrname = $( this ).children( ".name" ).children( ".player" ).text();
+            data.plyrname = $( this ).children( ".name" ).children( ".player" ).text().replace('>','').replace('<','');
             
             console.log( index + " plyrname: " + data.plyrname);
             
