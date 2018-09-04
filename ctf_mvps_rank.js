@@ -39,8 +39,7 @@
         });
         
         $("#chartbtn").click(function (){
-            var ctx = document.getElementById('chartcanvas').getContext('2d');
-			window.myLine = new Chart(ctx, config);
+            chartstats();
         });
         
     }
@@ -363,7 +362,8 @@
 
 		var colorNames = Object.keys(window.chartColors);
 		
-
+        var ctx = document.getElementById('chartcanvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
 		
 
 		
