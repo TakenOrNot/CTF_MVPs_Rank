@@ -353,9 +353,9 @@
 						yAxes: [{
 							gridLines: gridlines,
 							ticks: {
-								min: -10000,
-								max: 10000,
-								stepSize: 100
+								min: -5000,
+								max: 50000,
+								stepSize: 500
 							}
 						}]
 					}
