@@ -70,7 +70,9 @@
     $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul><div id='teamscores'></div><div id='advice'></div><div id='chartbtn' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Chart</div></div>" );
     
     
-
+    tredscorelog[];
+    tbluescorelog[];
+    ctscorelog = 0; 
     function calcmvps () {
         parray = [];
         var data = {};
@@ -286,6 +288,12 @@
         $("#teamscores").html("Blue : " + tbluescore + " Red:" + tredscore);
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
+        
+        
+        tredscorelog.push(tredscore);
+        tbluescorelog.push(tbluescore);
+        ctscorelogarray.push(ctscorelog);
+        ctscorelog = ctscorelog + 1;
     };
     
     
@@ -303,19 +311,19 @@
 			return {
 				type: 'line',
 				data: {
-					labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+					labels: ctscorelogarray,
 					datasets: [{
 						label: 'My First dataset',
 						backgroundColor: window.chartColors.red,
 						borderColor: window.chartColors.red,
-						data: [10, 30, 39, 20, 25, 34, 0],
+						data: tredscorelog,
 						fill: false,
 					}, {
 						label: 'My Second dataset',
 						fill: false,
 						backgroundColor: window.chartColors.blue,
 						borderColor: window.chartColors.blue,
-						data: [18, 33, 22, 19, 11, 39, 30],
+						data: tbluescorelog,
 					}]
 				},
 				options: {
