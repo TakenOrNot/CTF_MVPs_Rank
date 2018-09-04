@@ -261,7 +261,7 @@
             $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         $("#teamscores").html('');
-        $("#teamscores").html("Blue : " + tbluescore + " Red:" tredscore);
+        $("#teamscores").html("Blue : " + tbluescore + " Red:" + tredscore);
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
     };
