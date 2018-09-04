@@ -265,7 +265,7 @@
         
         $("#mvprankplayerlist").html('');
         $.each(sortedarr, function( index, value ) {
-            $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div class='kd' style='width:13%'>" + value.pkd + "</div><div class='kd' style='width:13%'>" + value.pcd + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
+            $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div class='captures'>&nbsp;</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pkd + "</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pcd + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         $("#teamscores").html('');
         $("#teamscores").html("Blue : " + tbluescore + " Red:" + tredscore);
