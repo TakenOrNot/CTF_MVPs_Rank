@@ -106,7 +106,7 @@
             }
             
             pkd = (pkills / pdeaths);
-            data.pkd = pkd;
+            data.pkd = Math.round(pkd * 100) / 100;
             // if k/d < 1, make it negative so a player with negative k/d and a cap has a lower score
             if (pkd < 1) { 
                 pkd = -(1 - pkd); 
@@ -115,7 +115,7 @@
             // TODO: use cap/death ratio instead of caps
             
             pcd = (pcaps / pdeaths); 
-            data.pcd = pcd;
+            data.pcd = Math.round(pcd * 100) / 100;
             //if (pcd < 1) { 
             //    pcd = -(1 - pcd); 
             //}
