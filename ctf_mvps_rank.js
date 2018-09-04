@@ -299,8 +299,8 @@
         
         
         
-        data.tredscorelog = (tredscore/tredcount);
-        data.tbluescorelog = (tbluescore/tbluecount);
+        data.tredscorelog = Math.floor(tredscore/tredcount);
+        data.tbluescorelog = Math.floor(tbluescore/tbluecount);
         tredscorelog.push(data.tredscorelog);
         tbluescorelog.push(data.tbluescorelog);
         
