@@ -357,7 +357,7 @@
 			});
 		};
 
-    }
+    
     
     SWAM.on ( 'gamePrep', function (){
         
