@@ -41,7 +41,7 @@
         $("#chartbtn").click(function (){
             var ctx = document.getElementById('chartcanvas').getContext('2d');
 			window.myLine = new Chart(ctx, config);
-        }
+        });
         
     }
     
