@@ -75,6 +75,8 @@
     
     tredscorelog = [];
     tbluescorelog = [];
+    tredscorelogcalcs = [];
+    tbluescorelogcalcs = [];
     ctscorelogarray = [];
     ctscorelog = 0; 
     function calcmvps () {
@@ -467,6 +469,8 @@
         // empty arrays 
         tredscorelog = [];
         tbluescorelog = [];
+        tredscorelogcalcs = [];
+        tbluescorelogcalcs = [];
         ctscorelogarray = [];
         ctscorelog = 0;
         // TODO :
