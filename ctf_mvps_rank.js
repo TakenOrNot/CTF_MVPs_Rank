@@ -308,11 +308,15 @@
         highesttbluescore = 0;
         lowesttredscore = 0;
         lowesttbluescore = 0;
+        data.tredscorelogitem = '';
+        data.tbluescorelogitem = '';
         
-        data.tredscorelog = Math.floor(tredscore/tredcount);
-        data.tbluescorelog = Math.floor(tbluescore/tbluecount);
-        tredscorelog.push(data.tredscorelog);
-        tbluescorelog.push(data.tbluescorelog);
+        data.tredscorelogitem = Math.floor(tredscore/tredcount);
+        data.tbluescorelogitem = Math.floor(tbluescore/tbluecount);
+        tredscorelog.push(data.tredscorelogitem);
+        tbluescorelog.push(data.tbluescorelogitem);
+        
+        
         
         tredscorelogcalcs = tredscorelog;
         tbluescorelogcalcs = tbluescorelog;
@@ -377,7 +381,7 @@
     
     
     function chartstats (ctscorelogarray,tredscorelog,tbluescorelog,highesttscore, lowesttscore, chartstep){
-        console.log("chart : " + tredscorelog + " & " + tbluescorelog);
+        console.log("chart red: " + tredscorelog + " & blue: " + tbluescorelog);
         window.chartColors = {
             red: 'rgba(248, 21, 69, 0.7)',
             orange: 'rgb(255, 159, 64)',
