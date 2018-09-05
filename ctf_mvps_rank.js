@@ -279,6 +279,7 @@
             if (nscorediff > scorediff) {
                 // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
+                shouldswitchsentence = '';
             }
             
         }
@@ -289,7 +290,7 @@
             $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div class='captures'>&nbsp;</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pkd + "</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pcd + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         $("#teamscores").html('');
-        $("#teamscores").html("Blue : " + tbluescore + " Red:" + tredscore);
+        $("#teamscores").html("<div style='color: #4d7fd5;'>Blue : " + tbluescore + "</div> <div style='color:#dc4f46;'>Red:" + tredscore + '</div>');
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
         
@@ -368,11 +369,11 @@
     function chartstats (ctscorelogarray,tredscorelog,tbluescorelog,highesttscore, lowesttscore, chartstep){
         console.log("chart : " + tredscorelog + " & " + tbluescorelog);
         window.chartColors = {
-            red: 'rgb(255, 99, 132)',
+            red: 'rgba(248, 21, 69, 0.7)',
             orange: 'rgb(255, 159, 64)',
             yellow: 'rgb(255, 205, 86)',
             green: 'rgb(75, 192, 192)',
-            blue: 'rgb(54, 162, 235)',
+            blue: 'rgba(54, 162, 235, 0.7)',
             purple: 'rgb(153, 102, 255)',
             grey: 'rgb(201, 203, 207)'
         };
