@@ -352,7 +352,7 @@
             lowesttscore = Math.floor(lowesttbluescore);
         }
         
-        chartstep = ((highesttscore + Math.abs(lowesttscore)) / 20);
+        chartstep = Math.floor((highesttscore + Math.abs(lowesttscore)) / 20);
         lowesttscore = lowesttscore - chartstep;
         highesttscore = highesttscore + chartstep;
         
@@ -468,6 +468,7 @@
         tredscorelog = [];
         tbluescorelog = [];
         ctscorelogarray = [];
+        ctscorelog = 0;
         // TODO :
         // calcmvp
     }
