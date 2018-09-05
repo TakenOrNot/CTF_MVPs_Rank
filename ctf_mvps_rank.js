@@ -294,10 +294,12 @@
         $("#advice").html(shouldswitchsentence);
         
         
-        // TODO : get highest and lowest players scores and normalise on a 0 to 100 scale
-        // then send normalised tscores to chart
+        // TODO : 
         
-        
+        highesttredscore = 0;
+        highesttbluescore = 0;
+        lowesttredscore = 0;
+        lowesttbluescore = 0;
         
         data.tredscorelog = Math.floor(tredscore/tredcount);
         data.tbluescorelog = Math.floor(tbluescore/tbluecount);
