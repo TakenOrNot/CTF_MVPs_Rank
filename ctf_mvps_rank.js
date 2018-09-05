@@ -346,7 +346,7 @@
             lowesttscore = Math.floor(lowesttbluescore);
         }
         
-        chartstep = 200;
+        chartstep = ((highesttscore + Math.abs(lowesttscore)) / 20);
         lowesttscore = lowesttscore - chartstep;
         highesttscore = highesttscore + chartstep;
         
@@ -458,10 +458,12 @@
     
     
     function onMatchStarted () {
-        // TODO : empty arrays 
+        // empty arrays 
         tredscorelog = [];
         tbluescorelog = [];
         ctscorelogarray = [];
+        // TODO :
+        // calcmvp
     }
 
 
