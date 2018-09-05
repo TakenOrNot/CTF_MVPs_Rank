@@ -309,28 +309,31 @@
         tredscorelog.push(data.tredscorelog);
         tbluescorelog.push(data.tbluescorelog);
         
-        highesttredscore = tredscorelog.sort(function(obj1, obj2) {
+        tredscorelogcalcs = tredscorelog;
+        tbluescorelogcalcs = tbluescorelog;
+        
+        highesttredscore = tredscorelogcalcs.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         }).reverse();
         
         highesttredscore = highesttredscore[0];
         
-        highesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
+        highesttbluescore = tbluescorelogcalcs.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         }).reverse();
         
         highesttbluescore = highesttbluescore[0];
         
-        lowesttredscore = tredscorelog.sort(function(obj1, obj2) {
+        lowesttredscore = tredscorelogcalcs.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         });
         
         lowesttredscore = lowesttredscore[0];
         
-        lowesttbluescore = tbluescorelog.sort(function(obj1, obj2) {
+        lowesttbluescore = tbluescorelogcalcs.sort(function(obj1, obj2) {
             // Ascending:
             return obj1 - obj2;
         });
