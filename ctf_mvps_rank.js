@@ -287,6 +287,9 @@
             }
             
         }
+        else {
+            scorediff = 0;
+        }
         
         
         $("#mvprankplayerlist").html('');
