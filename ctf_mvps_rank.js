@@ -351,7 +351,10 @@
         
         console.log("calc highesttscore : " + highesttscore + " calc lowesttscore : " + lowesttscore + " chartstep : " + chartstep);
         
+        // TODO : push new data instead of replacing the chart every time
+        
         ctscorelogarray.push(ctscorelog);
+        
         
         $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
@@ -453,8 +456,10 @@
     
     
     function onMatchStarted () {
-        // checkspecdelay = 10000;
-        // checkspec(checkspecdelay)
+        // TODO : empty arrays 
+        tredscorelog = [];
+        tbluescorelog = [];
+        ctscorelogarray = [];
     }
 
 
