@@ -294,7 +294,7 @@
             $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div class='captures'>&nbsp;</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pkd + "</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pcd + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         $("#teamscores").html('');
-        $("#teamscores").html("<div style='color: #4d7fd5;display: inline-block;padding-left: 20px;'>" + tbluescore + "</div> <div style='color:#dc4f46; display: inline-block;float: right;padding-right: 20px;'>" + tredscore + '</div>');
+        $("#teamscores").html("<div style='color: #4d7fd5;display: inline-block; width:33%;'>&nbsp;" + tbluescore + "</div>" + "<div style='text-align:center;width: 33%;'>" + scorediff + "</div><div style='color:#dc4f46; display: inline-block;float: right; text-align: right; width:33%;'>" + tredscore + '&nbsp;</div>');
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
         
@@ -433,7 +433,7 @@
         var container = document.querySelector('#mvprankcontainer');
 
 			[{
-				title: 'Display: true',
+				title: 'Mean Player Score',
 				gridLines: {
 					display: true
 				}
