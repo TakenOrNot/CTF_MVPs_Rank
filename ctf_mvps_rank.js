@@ -249,7 +249,7 @@
             console.log(shouldswitchsentence);
             
             
-            if (nscorediff > scorediff) {
+            if (nscorediff >= scorediff) {
                 // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
                 shouldswitchsentence = '';
@@ -280,7 +280,7 @@
             
             
             
-            if (nscorediff > scorediff) {
+            if (nscorediff >= scorediff) {
                 // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
                 shouldswitchsentence = '';
