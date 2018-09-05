@@ -318,8 +318,8 @@
         
         
         
-        tredscorelogcalcs = tredscorelog;
-        tbluescorelogcalcs = tbluescorelog;
+        tredscorelogcalcs = tredscorelog.slice(0);
+        tbluescorelogcalcs = tbluescorelog.slice(0);
         
         highesttredscore = tredscorelogcalcs.sort(function(obj1, obj2) {
             // Ascending:
