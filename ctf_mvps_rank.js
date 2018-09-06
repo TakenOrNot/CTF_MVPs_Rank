@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------------
-//   Stay Alive for StarMash
+//   CTF MVP Rank for StarMash
 // ------------------------------------------------------------------------
 !function () {
     /* INIT */
@@ -71,6 +71,8 @@
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
     $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 310px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul><div id='teamscores' style='font-size: 200%;'></div><div id='advice'></div><div id='chartbtn' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;'>Chart</div></div>" );
+    
+    /* SCORE CALC */
     
     
     tredscorelog = [];
@@ -144,10 +146,13 @@
             pcapscore = pcd;
             
             // TODO : use bounty somewhere
-            // NOTE : probably use something like (bounty * k/d) to avoid meaningless bounty of kill-less players
+            // NOTE : probably use something like (bounty * k/d) to weaken meaningless bounty of weak players
+            // who won bounty mainly from team win
+            // AND check if player has kills, if not, dont count it at all
+            // TODO : substract idle (spectating ones for now, hard to know who s idle) players scores from teamscore
+            // NOTE : maybe divide spectating player score by 2 as they can come back anytime
             
-            
-            //data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
+            // Obsolete : data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
             
             
             data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100)); 
@@ -182,6 +187,9 @@
             parray.push(data);
         });
         
+        // End $( "#scorecontainer .item" ).each
+        
+        
         sortedarr = parray.sort(function(obj1, obj2) {
             // Ascending:
             return obj1.pscore - obj2.pscore;
@@ -198,9 +206,11 @@
         }).reverse();
         
         // TODO : substract idle (spectating ones for now, hard to know who s idle) players scores from teamscore
+        // NOTE : maybe divide spectating player score by 2 as they can come back anytime
         
         console.log("tbluescore : " + tbluescore + " tredscore : " + tredscore);
         
+        // Advice about player switch
         
         function findClosest(array,num){
             var ansc;
@@ -228,14 +238,9 @@
         if (tbluescore > tredscore) {
             scorediff = (tbluescore - tredscore);
             console.log("Blue stronger, score diff : " + scorediff); 
-            //var findClosest = tbluearray.reduce(function(prev, curr, index) {
-            //    console.log(curr.name + " " + curr.score + " (prev : " + prev.score);
-            //    return (Math.abs(curr.score - scorediff) < Math.abs(prev - scorediff) ? curr.score : prev);
-            //});
+
             shouldswitch = findClosest(tbluescoresarray,scorediff);
            
-            //shouldswitch = findClosest.name + " " + findClosest.score;
-            // TODO : check if a switch wouldnt unbalance the game the other way around
             ntredscore = (tredscore + tbluescoresarray[shouldswitch]);
             ntbluescore = (tbluescore - tbluescoresarray[shouldswitch]);
             
@@ -248,7 +253,7 @@
             shouldswitchsentence = "Should switch to Red : " + tblueparray[shouldswitch] + " (Blue => " +  ntbluescore + ", Red => " + ntredscore + " scorediff : " + scorediff + " => " + nscorediff + " )";
             console.log(shouldswitchsentence);
             
-            
+            // Check if player switch wouldnt unbalance the other way around, or result in the same score
             if (nscorediff >= scorediff) {
                 // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
@@ -258,16 +263,12 @@
         } else if (tbluescore < tredscore) {
             scorediff = (tredscore - tbluescore);
             console.log("Red stronger, score diff : " + scorediff);
-            //var findClosest = tredarray.reduce(function(prev, curr, index) {
-            //    console.log(curr.name + " " + curr.score + " (prev : " + prev.score);
-            //    return (Math.abs(curr.score - scorediff) < Math.abs(prev - scorediff) ? curr.score : prev);
-            //});
+
             shouldswitch = findClosest(tredscoresarray,scorediff);
-            //findClosest(tredarray,scorediff);
-            //shouldswitch = findClosest.name + " " + findClosest.score;
-            // TODO : check if a switch wouldnt unbalance the game the other way around
+
             ntredscore = (tredscore - tredscoresarray[shouldswitch]);
             ntbluescore = (tbluescore + tredscoresarray[shouldswitch]);
+            
             
             if (ntbluescore > ntredscore) {
                 nscorediff = (ntbluescore - ntredscore);
@@ -279,7 +280,7 @@
             console.log(shouldswitchsentence);
             
             
-            
+            // Check if player switch wouldnt unbalance the other way around, or result in the same score
             if (nscorediff >= scorediff) {
                 // TODO : get second best player of strongest team
                 console.log("a switch would make it unbalanced the other way around");
@@ -291,6 +292,7 @@
             scorediff = 0;
         }
         
+        // Update GUI : Player List, Team Scores, and Advice
         
         $("#mvprankplayerlist").html('');
         $.each(sortedarr, function( index, value ) {
@@ -302,7 +304,7 @@
         $("#advice").html(shouldswitchsentence);
         
         
-        // TODO : 
+        // Prepare data for the Chart
         
         highesttredscore = 0;
         highesttbluescore = 0;
@@ -368,17 +370,16 @@
         
         console.log("calc highesttscore : " + highesttscore + " calc lowesttscore : " + lowesttscore + " chartstep : " + chartstep);
         
-        // TODO : push new data instead of replacing the chart every time
-        
         ctscorelogarray.push(ctscorelog);
         
-        
+        // TODO : push new data instead of replacing the chart every time
         $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
         
         ctscorelog = ctscorelog + 1;
     };
     
+    /* CHART */
     
     function chartstats (ctscorelogarray,tredscorelog,tbluescorelog,highesttscore, lowesttscore, chartstep){
         console.log("chart red: " + tredscorelog + " & blue: " + tbluescorelog);
@@ -467,11 +468,7 @@
     });
     
     
-    
 
-        
-    
-    
     function onMatchStarted () {
         // empty arrays 
         tredscorelog = [];
