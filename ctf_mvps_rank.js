@@ -112,6 +112,7 @@
             pkills = $( this ).children( ".kills" ).text();
             pdeaths = $( this ).children( ".deaths" ).text();
             pcaps = $( this ).children( ".captures" ).text();
+            plvl = $( this ).children( ".rank" ).text();
             // gota ask statsbot
             // precapskills = 
             // precapsreturns = 
@@ -126,6 +127,10 @@
             if (pcaps == ' '){
                 console.log( index + ": caps count correction");
                 pcaps = 0;
+            }
+            
+            if (plvl == 'nbsp;'){
+                plvl = 0;
             }
             
             pkd = (pkills / pdeaths);
@@ -154,8 +159,10 @@
             
             // Obsolete : data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
             
+            // TODO: add player level in the mix
             
-            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100)); 
+            
+            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100) + (plvl * 10)); 
             
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
