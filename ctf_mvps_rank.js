@@ -158,11 +158,10 @@
             // NOTE : maybe divide spectating player score by 2 as they can come back anytime
             
             // Obsolete : data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
+
             
-            // TODO: add player level in the mix
             
-            
-            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100) + (plvl * 10)); 
+            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100) + (plvl * 5)); 
             
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
