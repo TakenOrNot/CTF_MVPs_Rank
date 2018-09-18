@@ -7,6 +7,7 @@
         console.log('init CTF_MVPs_Rank');
         initEvents ();
         initHTML ();
+        window.calcinterval = '';
     }
 
     function initEvents () {
@@ -48,7 +49,7 @@
             $('.mvptab').not('#charttab').css({display: "none"});
             $('#charttab').css({display: "block"});
             if (!calcinterval){
-                var calcinterval = setInterval(calcmvps, 60000); 
+                window.calcinterval = setInterval(calcmvps, 60000); 
             }
             
         });
