@@ -79,7 +79,7 @@
     
     $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvprank' style='display: block; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px; top:10px;'>Rank</div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div id='mvpbtnscontainer' style='padding:1em;'><div id='mvpranktablebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Table</div><div id='chartbtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Chart</div></div><div class='mvptab' id='ranktab' style='height: 250px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 250px;overflow:auto;'></div><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em;'></div></div>" );
+    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div id='mvpbtnscontainer' style='padding:1em;'><div id='mvpranktablebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Table</div><div id='chartbtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Chart</div></div><div class='mvptab' id='ranktab' style='height: 250px;overflow:auto;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 250px;overflow:auto;'></div><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em 1em 0 1em;'></div></div>" );
     
     /* SCORE CALC */
     
@@ -170,7 +170,7 @@
 
             
             
-            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 50) + (plvl * 5)); 
+            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pcapscore * 100) + (pkd * 50) + (plvl * 5)); 
             
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
@@ -251,6 +251,8 @@
         shouldswitch = '';
         
         if (tbluescore > tredscore) {
+            teamredscoreclass = '';
+            teambluescoreclass = 'emote-bro';
             scorediff = (tbluescore - tredscore);
             console.log("Blue stronger, score diff : " + scorediff); 
 
@@ -276,6 +278,8 @@
             }
             
         } else if (tbluescore < tredscore) {
+            teamredscoreclass = 'emote-bro';
+            teambluescoreclass = '';
             scorediff = (tredscore - tbluescore);
             console.log("Red stronger, score diff : " + scorediff);
 
@@ -314,7 +318,7 @@
             $("#mvprankplayerlist").append("<li class='item'><div class='name'><div class='position'>" + (index + 1) + ".</div> <div class='player " + value.pteam + "'> " + value.plyrname + "</div></div><div class='captures'>&nbsp;</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pkd + "</div><div class='kd' style='width:13%; display: inline-block;'>" + value.pcd + "</div><div style='float:right;padding-right: 2em;'>" + value.pscore + "</div></li>");
         });
         $("#teamscores").html('');
-        $("#teamscores").html("<div style='color: #4d7fd5;display: inline-block; width:33%;'>&nbsp;" + tbluescore + "</div>" + "<div style='text-align:center;width: 33%;display: inline-block;'>" + scorediff + "</div><div style='color:#dc4f46; display: inline-block;float: right; text-align: right; width:33%;'>" + tredscore + '&nbsp;</div>');
+        $("#teamscores").html("<div style='color: #4d7fd5;display: inline-block; width:33%;'><div class='" + teambluescoreclass + "'></div>&nbsp;" + tbluescore + "</div>" + "<div style='text-align:center;width: 33%;display: inline-block;'>" + scorediff + "</div><div style='color:#dc4f46; display: inline-block;float: right; text-align: right; width:33%;'>" + tredscore + '&nbsp;<div class='" + teamredscoreclass + "'></div></div>');
         $("#advice").html('');
         $("#advice").html(shouldswitchsentence);
         
@@ -480,9 +484,19 @@
     SWAM.on ( 'gamePrep', function (){
         
         //$("#mvprankcontainer").css({display: "none"});
+        
+        // empty arrays 
+        tredscorelog = [];
+        tbluescorelog = [];
+        tredscorelogcalcs = [];
+        tbluescorelogcalcs = [];
+        ctscorelogarray = [];
+        ctscorelog = 0;
     });
     
     // TODO : have a setting to auto update and if true, hook to detailedScoreUpdate event
+    // or even better, update only when detailed scoreboard is displayed
+    // (on #viewscore clicked and keypress tab)
 
     function onMatchStarted () {
         // empty arrays 
