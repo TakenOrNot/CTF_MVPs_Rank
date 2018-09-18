@@ -170,7 +170,7 @@
 
             
             
-            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 100) + (plvl * 5)); 
+            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pkd * 50) + (plvl * 5)); 
             
             
             if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
