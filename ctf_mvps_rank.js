@@ -484,9 +484,10 @@
     
     SWAM.on ( 'gamePrep', function (){
         
-        window.isctf = $('#open-menu').text().includes("CTF");
+        
         
         window.setTimeout(function () {
+            window.isctf = $('#open-menu').text().includes("CTF");
             if (isctf){
                 console.log('is ctf');
                 $('#mvpctfspecific').css({display: "block"});
