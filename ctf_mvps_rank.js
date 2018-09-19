@@ -486,13 +486,15 @@
         
         window.isctf = $('#open-menu').text().includes("CTF");
         
-        if (isctf){
-            console.log('is ctf');
-            $('#mvpctfspecific').css({display: "block"});
-        }
-        else {
-            console.log('is not ctf');
-        }
+        window.setTimeout(function () {
+            if (isctf){
+                console.log('is ctf');
+                $('#mvpctfspecific').css({display: "block"});
+            }
+            else {
+                console.log('is not ctf');
+            }
+        }, 10000);
         // empty arrays 
         tredscorelog = [];
         tbluescorelog = [];
