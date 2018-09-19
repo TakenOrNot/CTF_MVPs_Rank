@@ -510,6 +510,7 @@
     // TODO : have a setting to auto update and if true, hook to detailedScoreUpdate event
     // or even better, update only when detailed scoreboard is displayed
     // (on #viewscore clicked and keypress tab)
+    // then check every time calcmvp runs if detailed scoreboard is still visible
 
     function onMatchStarted () {
         // empty arrays 
