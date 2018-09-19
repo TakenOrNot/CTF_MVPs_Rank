@@ -491,7 +491,7 @@
             $('#mvpctfspecific').css({display: "block"});
         }
         else {
-            onsole.log('is not ctf');
+            console.log('is not ctf');
         }
         // empty arrays 
         tredscorelog = [];
