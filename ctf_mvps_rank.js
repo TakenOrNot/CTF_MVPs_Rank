@@ -487,7 +487,11 @@
         window.isctf = $('#open-menu').text().includes("CTF");
         
         if (isctf){
+            console.log('is ctf');
             $('#mvpctfspecific').css({display: "block"});
+        }
+        else {
+            onsole.log('is not ctf');
         }
         // empty arrays 
         tredscorelog = [];
