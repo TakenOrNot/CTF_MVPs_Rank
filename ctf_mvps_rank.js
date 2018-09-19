@@ -487,7 +487,7 @@
         window.isctf = $('#open-menu').text().includes("CTF");
         
         if (isctf){
-            $('#mvpctfspecific').show();
+            $('#mvpctfspecific').css({display: "block"});
         }
         // empty arrays 
         tredscorelog = [];
