@@ -494,6 +494,7 @@
             }
             else {
                 console.log('is not ctf');
+                $('#mvpctfspecific').css({display: "none"});
             }
         }, 10000);
         // empty arrays 
