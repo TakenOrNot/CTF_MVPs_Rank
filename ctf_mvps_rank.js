@@ -485,7 +485,8 @@
     SWAM.on ( 'gamePrep', function (){
         
         
-        
+        // check gametype before
+        //if (game.gameType == SWAM.GAME_TYPE.CTF) {
         window.setTimeout(function () {
             window.isctf = $('#open-menu').text().includes("CTF");
             if (isctf){
