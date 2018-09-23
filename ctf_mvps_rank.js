@@ -14,7 +14,7 @@
     function initEvents () {
         
         SWAM.on ( 'CTF_MatchStarted', onMatchStarted );
-        
+        SWAM.on ( 'CTF_MatchEnded', onMatchEnded );
         
         
         $("#mvprank").click(function (){
@@ -50,7 +50,7 @@
             $('.mvptab').not('#charttab').css({display: "none"});
             $('#charttab').css({display: "block"});
             if (!calcinterval){
-                window.calcinterval = setInterval(calcmvps, 60000); 
+                var calcinterval = setInterval(calcmvps, 60000); 
             }
             
         });
@@ -526,7 +526,20 @@
         // TODO :
         // calcmvp
     }
-
+    
+    
+    function onMatchEnded () {
+        
+        calcmvp();
+        // empty arrays 
+        tredscorelog = [];
+        tbluescorelog = [];
+        tredscorelogcalcs = [];
+        tbluescorelogcalcs = [];
+        ctscorelogarray = [];
+        ctscorelog = 0;
+         
+    }
 
     /* REGISTER */
 
