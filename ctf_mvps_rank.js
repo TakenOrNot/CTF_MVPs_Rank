@@ -56,6 +56,12 @@
         });
         
         $("#chartbtn").click(function (){
+            $('#scoredetailed .spacer').first().hide();
+            $("#scorecontainer").hide();
+            $( "#scoretable" ).hide();
+            $("#scoremvp").hide();
+            $("#defaultscoreboardbtn").show();
+            $("#mvprankcontainer").css({display: "block"});
             
             calcmvps ()
             
