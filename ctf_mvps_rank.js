@@ -56,11 +56,12 @@
         });
         
         $("#chartbtn").click(function (){
+            
+            calcmvps ()
+            
             $('.mvptab').not('#charttab').css({display: "none"});
             $('#charttab').css({display: "block"});
-            if (!calcinterval){
-                var calcinterval = setInterval(calcmvps, 60000); 
-            }
+            
             
         });
         
