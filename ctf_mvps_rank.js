@@ -440,13 +440,13 @@
 				data: {
 					labels: ctscorelogarray,
 					datasets: [{
-						label: 'Red',
+						label: 'Red Mean',
 						backgroundColor: window.chartColors.red,
 						borderColor: window.chartColors.red,
 						data: tredscorelog,
 						fill: false,
 					}, {
-						label: 'Blue',
+						label: 'Blue Mean',
 						fill: false,
 						backgroundColor: window.chartColors.blue,
 						borderColor: window.chartColors.blue,
@@ -456,7 +456,7 @@
 				options: {
 					responsive: true,
 					title: {
-						display: true,
+						display: false,
 						text: title
 					},
 					scales: {
