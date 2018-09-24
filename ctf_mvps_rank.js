@@ -7,8 +7,9 @@
         console.log('init CTF_MVPs_Rank');
         initEvents ();
         initHTML ();
+        window.autoupdate = false;
         window.calcinterval = '';
-        window.isctf = false;
+        // window.isctf = false;
     }
 
     function initEvents () {
@@ -72,7 +73,8 @@
         });
         
         $("#autoupdatebtn").click(function (){
-            if (!window.calcinterval){
+            if (!window.autoupdate){
+                window.autoupdate = true;
                 window.calcinterval = setInterval(calcmvps, 60000); 
                 $(this).css({background: "rgba(247, 0, 97, 0.8)"})
             }
@@ -561,14 +563,23 @@
     function onMatchStarted () {
         // empty arrays 
         resetvalues()
-        // TODO :
+
         calcmvps();
+        // launch autoupdate interval
+        if (window.autoupdate){
+             window.calcinterval = setInterval(calcmvps, 60000); 
+        }
     }
     
     
     function onMatchEnded () {
         
         calcmvps();
+        
+        // pause autoupdate interval
+        if (window.autoupdate){
+            clearInterval(window.calcinterval);
+        }
         // wait 50 sec
         window.setTimeout(function () {
             // empty arrays 
