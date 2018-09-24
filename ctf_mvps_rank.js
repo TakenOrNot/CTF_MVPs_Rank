@@ -560,7 +560,7 @@
     
     function onMatchEnded () {
         
-        calcmvp();
+        calcmvps();
         // empty arrays 
         tredscorelog = [];
         tbluescorelog = [];
