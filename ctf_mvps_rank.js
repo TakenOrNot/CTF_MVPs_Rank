@@ -87,7 +87,16 @@
     function initHTML () {
         const headhtml = `<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>`
         
-        $('head').append ( headhtml );
+            $('head').append ( headhtml );
+
+
+            /* GUI */
+
+            $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvpbtnscontainer' style='display: block;width: 180px;height: 25px;padding: 5px;border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px;top: 10px;'><div id='mvpranktablebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Table</div><div id='chartbtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Chart</div><div id='autoupdatebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>AutoUpdate</div></div></div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
+
+            $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div class='mvptab' id='ranktab' style='height: 280px;    overflow:hidden;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;height: 240px; overflow:auto;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 280px;overflow:auto;'></div><div id='mvpctfspecific' style='display:none;'><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em 1em 0 1em;'></div></div></div>" );
+        
+        
     }
     
     SWAM.on ( 'gameLoaded', init );
@@ -103,21 +112,21 @@
     };
     
     
-    /* GUI */
     
-    $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvpbtnscontainer' style='display: block;width: 180px;height: 25px;padding: 5px;border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px;top: 10px;'><div id='mvpranktablebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Table</div><div id='chartbtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Chart</div><div id='autoupdatebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>AutoUpdate</div></div></div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
-
-    $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div class='mvptab' id='ranktab' style='height: 280px;    overflow:hidden;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;height: 240px; overflow:auto;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 280px;overflow:auto;'></div><div id='mvpctfspecific' style='display:none;'><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em 1em 0 1em;'></div></div></div>" );
     
     /* SCORE CALC */
     
+    function resetvalues(){
+        tredscorelog = [];
+        tbluescorelog = [];
+        tredscorelogcalcs = [];
+        tbluescorelogcalcs = [];
+        ctscorelogarray = [];
+        ctscorelog = 0; 
+        
+    }
+    resetvalues()
     
-    tredscorelog = [];
-    tbluescorelog = [];
-    tredscorelogcalcs = [];
-    tbluescorelogcalcs = [];
-    ctscorelogarray = [];
-    ctscorelog = 0; 
     function calcmvps () {
         parray = [];
         var data = {};
@@ -515,8 +524,7 @@
     SWAM.on ( 'gamePrep', function (){
         
         
-        // check gametype before
-        //if (game.gameType == SWAM.GAME_TYPE.CTF) {
+        // dont display teams scores and switch advice in ffa/btr
         if (game.gameType == SWAM.GAME_TYPE.CTF) {
             console.log('is ctf');
             $('#mvpctfspecific').css({display: "block"});
@@ -539,12 +547,7 @@
         }, 10000);
         */
         // empty arrays 
-        tredscorelog = [];
-        tbluescorelog = [];
-        tredscorelogcalcs = [];
-        tbluescorelogcalcs = [];
-        ctscorelogarray = [];
-        ctscorelog = 0;
+        resetvalues()
         
         
         
@@ -557,28 +560,20 @@
 
     function onMatchStarted () {
         // empty arrays 
-        tredscorelog = [];
-        tbluescorelog = [];
-        tredscorelogcalcs = [];
-        tbluescorelogcalcs = [];
-        ctscorelogarray = [];
-        ctscorelog = 0;
+        resetvalues()
         // TODO :
-        // calcmvps
+        calcmvps();
     }
     
     
     function onMatchEnded () {
         
         calcmvps();
-        // empty arrays 
-        tredscorelog = [];
-        tbluescorelog = [];
-        tredscorelogcalcs = [];
-        tbluescorelogcalcs = [];
-        ctscorelogarray = [];
-        ctscorelog = 0;
-         
+        // wait 50 sec
+        window.setTimeout(function () {
+            // empty arrays 
+            resetvalues()
+        }, 50000); 
     }
 
     /* REGISTER */
