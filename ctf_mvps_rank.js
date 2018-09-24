@@ -465,6 +465,9 @@
 						display: false,
 						text: title
 					},
+                    legend: {
+                        display: false
+                    },
 					scales: {
 						xAxes: [{
 							gridLines: gridlines
