@@ -517,6 +517,15 @@
         
         // check gametype before
         //if (game.gameType == SWAM.GAME_TYPE.CTF) {
+        if (game.gameType == SWAM.GAME_TYPE.CTF) {
+            console.log('is ctf');
+            $('#mvpctfspecific').css({display: "block"});
+        }
+        else {
+            console.log('is not ctf');
+            $('#mvpctfspecific').css({display: "none"});
+        }
+        /*
         window.setTimeout(function () {
             window.isctf = $('#open-menu').text().includes("CTF");
             if (isctf){
@@ -528,6 +537,7 @@
                 $('#mvpctfspecific').css({display: "none"});
             }
         }, 10000);
+        */
         // empty arrays 
         tredscorelog = [];
         tbluescorelog = [];
