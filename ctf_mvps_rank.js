@@ -72,13 +72,13 @@
         });
         
         $("#autoupdatebtn").click(function (){
-            if (!calcinterval){
-                var calcinterval = setInterval(calcmvps, 60000); 
+            if (!window.calcinterval){
+                window.calcinterval = setInterval(calcmvps, 60000); 
                 $(this).css({background: "rgba(247, 0, 97, 0.8)"})
             }
             else {
                 $(this).css({background: "rgba(0, 247, 0, 0.5)"})
-                clearInterval(calcinterval);
+                clearInterval(window.calcinterval);
             }
         });
         
