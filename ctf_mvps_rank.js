@@ -434,6 +434,8 @@
         $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
         
+        // TODO : get game time (dom) on first time calcmvps runs, to start with correct time as x axis
+        
         ctscorelog = ctscorelog + 1;
     };
     
@@ -556,8 +558,8 @@
     });
     
     // TODO : have a setting to auto update and if true, hook to detailedScoreUpdate event
-    // or even better, update only when detailed scoreboard is displayed
-    // (on #viewscore clicked and keypress tab)
+    // or even better, update the chart only when detailed scoreboard is displayed
+    // (on #viewscore clicked / keypress tab)
     // then check every time calcmvp runs if detailed scoreboard is still visible
 
     function onMatchStarted () {
@@ -576,9 +578,16 @@
         
         calcmvps();
         
-        // pause autoupdate interval
+        
         if (window.autoupdate){
+            // pause autoupdate interval
             clearInterval(window.calcinterval);
+            // wait 10 sec
+            window.setTimeout(function () {
+                // display ended match chart
+                $("#viewscore").click();
+                $("#chartbtn").click();
+            }, 10000); 
         }
         // wait 50 sec
         window.setTimeout(function () {
