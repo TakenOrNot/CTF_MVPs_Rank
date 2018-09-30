@@ -7,7 +7,7 @@
         console.log('init CTF_MVPs_Rank');
         initEvents ();
         initHTML ();
-        initStyle ();
+        //initStyle ();
         window.autoupdate = false;
         window.calcinterval = '';
         // window.isctf = false;
@@ -94,7 +94,7 @@
 
 
     }
-    
+    /*
     function initStyle () {
         const style = `<style id='mvprankStyle'>
                 .chart-container > canvas {width: 630px; height: 280px;}
@@ -102,7 +102,7 @@
         `
         $('body').append ( style );
     }
-    
+    */
     
     SWAM.on ( 'gameLoaded', init );
     
@@ -120,7 +120,7 @@
 
             $( "#scoredetailed .header" ).append("<div id='mvprankbtnscontainer' style=''><div id='mvpbtnscontainer' style='display: block;width: 180px;height: 25px;padding: 5px;border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;right: 10px;top: 10px;'><div id='mvpranktablebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Table</div><div id='chartbtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>Chart</div><div id='autoupdatebtn' style='display: inline; width: 50px;height: 15px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 10px;cursor: pointer;margin-right: 10px;'>AutoUpdate</div></div></div><div id='defaultscoreboardbtn' style='display: none; width: 150px;height: 25px;padding: 5px;background: rgba(0, 247, 0, 0.5);border-radius: 5px;text-align: center;color: #EEE;font-size: 15px;cursor: pointer;position: absolute;left: 10px; top:10px;'>ScoreBoard</div></div>");
 
-            $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div class='mvptab' id='ranktab' style='height: 280px;    overflow:hidden;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;height: 240px; overflow:auto;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 280px;overflow:auto;'></div><div id='mvpctfspecific' style='display:none;'><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em 1em 0 1em;'></div></div></div>" );
+            $( "#scorecontainer" ).after( "<div id='mvprankcontainer' style='display:none;max-height: 350px;overflow:auto;'><div class='mvptab' id='ranktab' style='height: 280px;    overflow:hidden;'><div class='item head' id='ranktable'><div class='name'>&nbsp;</div><div class='captures'>&nbsp;</div><div class='kd' style='display:inline-block; width:13%;'>KD</div><div class='cd' style='display:inline-block; width:13%;'>CD</div><div class='score' style='display:inline-block;width: 23%;text-align: right;'>Score</div></div><div class='spacer'></div><ul id='mvprankplayerlist' style='list-style-type: none;padding-left: 0px; margin-top:0px;height: 240px; overflow:auto;'></ul></div><div class='mvptab' id='charttab' style='display:none; height: 280px;overflow:auto;'><canvas id='teamsChart' width='630' height='280'></canvas></div><div id='mvpctfspecific' style='display:none;'><div id='teamscores' style='font-size: 200%;'></div><div id='advice' style='text-align: center;padding: 1em 1em 0 1em;'></div></div></div>" );
     
     
     /* SCORE CALC */
@@ -438,7 +438,7 @@
         ctscorelogarray.push(ctscorelog);
         
         // TODO : push new data instead of replacing the chart every time
-        $('.chart-container').remove();
+        // $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
         
         // TODO : get game time (dom) on first time (or maybe each time ?) calcmvps runs, to start with correct time as x axis
@@ -516,6 +516,7 @@
 					display: true
 				}
 			}].forEach(function(details) {
+                /*
 				var div = document.createElement('div');
 				div.classList.add('chart-container');
 
@@ -525,6 +526,10 @@
 
 				var ctx = canvas.getContext('2d');
 				var config = createConfig(details.gridLines, details.title);
+				new Chart(ctx, config);
+                */
+                var ctx = document.getElementById('teamsChart').getContext('2d');
+                var config = createConfig(details.gridLines, details.title);
 				new Chart(ctx, config);
 			});
 		};
