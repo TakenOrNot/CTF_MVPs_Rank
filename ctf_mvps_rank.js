@@ -527,8 +527,8 @@
 				var config = createConfig(details.gridLines, details.title);
 				new Chart(ctx, config);
                 
-                Chart.canvas.parentNode.style.height = '280px';
-                Chart.canvas.parentNode.style.height = '620px';
+                //Chart.canvas.parentNode.style.height = '280px';
+                //Chart.canvas.parentNode.style.height = '620px';
 			});
 		};
 
