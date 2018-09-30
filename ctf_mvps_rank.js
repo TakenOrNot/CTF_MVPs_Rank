@@ -94,15 +94,15 @@
 
 
     }
-    /*
+    
     function initStyle () {
         const style = `<style id='mvprankStyle'>
-                .chart-container > canvas {width: 630px; height: 280px;}
+                .chart-container {width: 630px; height: 280px;}
             </style>
         `
         $('body').append ( style );
     }
-    */
+    
     
     SWAM.on ( 'gameLoaded', init );
     
@@ -527,8 +527,8 @@
 				var config = createConfig(details.gridLines, details.title);
 				new Chart(ctx, config);
                 
-                chart.canvas.parentNode.style.height = '280px';
-                chart.canvas.parentNode.style.height = '620px';
+                //Chart.canvas.parentNode.style.height = '280px';
+                //Chart.canvas.parentNode.style.height = '620px';
 			});
 		};
 
