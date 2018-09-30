@@ -97,7 +97,9 @@
     
     function initStyle () {
         const style = `<style id='mvprankStyle'>
-                .chart-container {width: 630px; height: 280px;}
+                .chart-container {width: 98%; height: 280px;}
+                .chart-container > canvas {max-height: 280px;}
+     
             </style>
         `
         $('body').append ( style );
