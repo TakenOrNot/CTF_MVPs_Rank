@@ -7,6 +7,7 @@
         console.log('init CTF_MVPs_Rank');
         initEvents ();
         initHTML ();
+        initStyle ();
         window.autoupdate = false;
         window.calcinterval = '';
         // window.isctf = false;
@@ -89,13 +90,19 @@
     function initHTML () {
         const headhtml = `<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>`
         
-            $('head').append ( headhtml );
+        $('head').append ( headhtml );
 
 
-            
-        
-        
     }
+    
+    function initStyle () {
+        const style = `<style id='mvprankStyle'>
+                .chart-container > canvas {width: 630px; height: 280px;}
+            </style>
+        `
+        $('body').append ( style );
+    }
+    
     
     SWAM.on ( 'gameLoaded', init );
     
@@ -434,7 +441,7 @@
         $('.chart-container').remove();
         chartstats(ctscorelogarray,tredscorelog,tbluescorelog, highesttscore, lowesttscore, chartstep);
         
-        // TODO : get game time (dom) on first time calcmvps runs, to start with correct time as x axis
+        // TODO : get game time (dom) on first time (or maybe each time ?) calcmvps runs, to start with correct time as x axis
         
         ctscorelog = ctscorelog + 1;
     };
