@@ -7,7 +7,7 @@
         console.log('init CTF_MVPs_Rank');
         initEvents ();
         initHTML ();
-        //initStyle ();
+        initStyle ();
         window.autoupdate = false;
         window.calcinterval = '';
         // window.isctf = false;
