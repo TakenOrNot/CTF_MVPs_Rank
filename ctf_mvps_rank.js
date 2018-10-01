@@ -167,7 +167,7 @@
         //$( "#scorecontainer .item" ).each(function( index ) {
         
             var data = {};
-            console.log( index + ": " + $( this ).text() );
+            //console.log( index + ": " + $( this ).text() );
             //data.plyrid = $( this ).attr('player-id');
             data.plyrid = id;
             //data.plyrname = $( this ).children( ".name" ).children( ".player" ).text().replace('>','').replace('<','');
