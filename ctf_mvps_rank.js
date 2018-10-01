@@ -101,9 +101,13 @@
             if (settings.autoupdate === true){
                 console.log("mvprank autoupdate !!");
                 window.autoupdate = true;
+                window.calcinterval = setInterval(calcmvps, 60000);
+                $("#autoupdatebtn").css({background: "rgba(247, 0, 97, 0.8)"});
             }
             else {
                 window.autoupdate = false;
+                clearInterval(window.calcinterval);
+                $("#autoupdatebtn").css({background: "rgba(0, 247, 0, 0.5)"});
             }
         }
 
@@ -114,7 +118,7 @@
 
         let sp = new SettingsProvider(settings, onApply);
     
-        let section = sp.addSection("Look & feel");
+        let section = sp.addSection("Extension Behavior");
         section.addBoolean("autoupdate", "Activate Auto Update");
 
         
