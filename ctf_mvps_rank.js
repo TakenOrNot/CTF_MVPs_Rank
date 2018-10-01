@@ -197,12 +197,12 @@
             
             // avoid infinity ratio if deaths = 0
             if (pdeaths == 0){
-                console.log( index + ": deaths count correction");
+                //console.log( index + ": deaths count correction");
                 pdeaths = 1;
             }
             // correct caps count if caps = 0
             if (pcaps == ' '){
-                console.log( index + ": caps count correction");
+                //console.log( index + ": caps count correction");
                 pcaps = 0;
             }
             
@@ -266,8 +266,8 @@
             
             
             
-            console.log( index + " kd: " + pkd );
-            console.log( index + " score: " + data.pscore );
+            //console.log( index + " kd: " + pkd );
+            //console.log( index + " score: " + data.pscore );
             parray.push(data);
         });
         
