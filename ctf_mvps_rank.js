@@ -154,22 +154,42 @@
         tredcount = 0;
         tredscore = 0;
         
-        $( "#scorecontainer .item" ).each(function( index ) {
+        // TODO : use Players.getIDs() instead
+        // use "status" to know if spectating (1) or playing (0)
+        
+        allplayers = Players.getIDs(); 
+        allplayersids = Object.keys(allplayers);
+        
+        
+        allplayersids.forEach(function(id) {
+            console.log(id);
+        //});
+        //$( "#scorecontainer .item" ).each(function( index ) {
         
             var data = {};
             console.log( index + ": " + $( this ).text() );
-            data.plyrid = $( this ).attr('player-id');
+            //data.plyrid = $( this ).attr('player-id');
+            data.plyrid = id;
+            //data.plyrname = $( this ).children( ".name" ).children( ".player" ).text().replace('>','').replace('<','');
+            data.plyrname = Players.get(id).name;
             
-            data.plyrname = $( this ).children( ".name" ).children( ".player" ).text().replace('>','').replace('<','');
+            // TODO : check if name div contains <strike> to ignore spectating players in total team score & chart mean team player score
             
             console.log( index + " plyrname: " + data.plyrname);
             
             
+            Players.get(id).killCount;
+
+            //pkills = $( this ).children( ".kills" ).text();
+            pkills = Players.get(id).killCount;
+            //pdeaths = $( this ).children( ".deaths" ).text();
+            pdeaths = Players.get(id).deathCount;
+            //pcaps = $( this ).children( ".captures" ).text();
+            pcaps = Players.get(id).captures;
+            //plvl = $( this ).children( ".rank" ).text();
+            plvl = Players.get(id).level;
             
-            pkills = $( this ).children( ".kills" ).text();
-            pdeaths = $( this ).children( ".deaths" ).text();
-            pcaps = $( this ).children( ".captures" ).text();
-            plvl = $( this ).children( ".rank" ).text();
+            
             // gota ask statsbot
             // precapskills = 
             // precapsreturns = 
@@ -221,7 +241,8 @@
             data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pcapscore * 100) + (pkd * 50) + (plvl * 5)); 
             
             
-            if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
+            //if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
+            if (Players.get(id).team == 1){
                 console.log('team 1 blue');
                 data.pteam = 'team-1';
                 tbluecount = tbluecount + 1;
