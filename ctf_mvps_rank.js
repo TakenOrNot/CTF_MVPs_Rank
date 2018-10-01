@@ -88,6 +88,43 @@
         
     }
     
+    // Settings
+    
+    function createSettingsProvider()
+    {
+        // This is the handler that will be executed when new settings are applied
+        function onApply(values)
+        {
+            console.log ("MVP Rank settings applied: ", values);
+            settings = values;
+
+            if (settings.autoupdate === true){
+                console.log("mvprank autoupdate !!");
+                window.autoupdate = true;
+            }
+            else {
+                window.autoupdate = false;
+            }
+        }
+
+        // Default values for the settings
+        let settings = {
+            autoupdate: false,
+        };
+
+        let sp = new SettingsProvider(settings, onApply);
+    
+        let section = sp.addSection("Look & feel");
+        section.addBoolean("autoupdate", "Activate Auto Update");
+
+        
+        
+        // we return our SettingsProvider instance
+        return sp;
+    }
+       
+    // ------------------------------------------------------------------------
+    
     function initHTML () {
         const headhtml = `<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>`
         
