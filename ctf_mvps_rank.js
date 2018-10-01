@@ -674,6 +674,7 @@
         id: 'CTF_MVPs_Rank',
         description: '',
         version: '1.0.0',
+        settingsProvider: createSettingsProvider(),
         author: 'xplay'
     });
     
