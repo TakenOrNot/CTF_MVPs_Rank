@@ -80,8 +80,9 @@
                 $(this).css({background: "rgba(247, 0, 97, 0.8)"})
             }
             else {
-                $(this).css({background: "rgba(0, 247, 0, 0.5)"})
+                window.autoupdate = false;
                 clearInterval(window.calcinterval);
+                $(this).css({background: "rgba(0, 247, 0, 0.5)"});
             }
         });
         
