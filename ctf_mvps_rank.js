@@ -223,7 +223,7 @@
             Players.get(id).killCount;
 
             //pkills = $( this ).children( ".kills" ).text();
-            pkills = Players.get(id).killCount;
+            pkills = Players.get(id).totalKills;
             //pdeaths = $( this ).children( ".deaths" ).text();
             pdeaths = Players.get(id).deathCount;
             //pcaps = $( this ).children( ".captures" ).text();
