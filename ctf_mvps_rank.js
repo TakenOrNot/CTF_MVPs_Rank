@@ -175,7 +175,7 @@
             
             // TODO : check if name div contains <strike> to ignore spectating players in total team score & chart mean team player score
             
-            console.log( index + " plyrname: " + data.plyrname);
+            // console.log( index + " plyrname: " + data.plyrname);
             
             
             Players.get(id).killCount;
