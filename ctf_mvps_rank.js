@@ -50,7 +50,12 @@
             $("#defaultscoreboardbtn").show();
             $("#mvprankcontainer").css({display: "block"});
             
-            calcmvps ()
+            if (window.autoupdate){
+                
+            }
+            else {
+                calcmvps ()
+            }
             
             $('.mvptab').not('#ranktab').css({display: "none"});
             $('#ranktab').css({display: "block"});
@@ -65,8 +70,12 @@
             $("#defaultscoreboardbtn").show();
             $("#mvprankcontainer").css({display: "block"});
             
-            calcmvps ()
-            
+            if (window.autoupdate){
+                
+            }
+            else {
+                calcmvps ()
+            }
             $('.mvptab').not('#charttab').css({display: "none"});
             $('#charttab').css({display: "block"});
             
