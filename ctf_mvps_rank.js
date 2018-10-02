@@ -50,6 +50,7 @@
             $("#defaultscoreboardbtn").show();
             $("#mvprankcontainer").css({display: "block"});
             
+            // TODO : find a better way
             if (window.autoupdate){
                 
             }
@@ -70,6 +71,7 @@
             $("#defaultscoreboardbtn").show();
             $("#mvprankcontainer").css({display: "block"});
             
+            // TODO : find a better way
             if (window.autoupdate){
                 
             }
@@ -128,6 +130,7 @@
         let sp = new SettingsProvider(settings, onApply);
     
         let section = sp.addSection("Extension Behavior");
+        // TODO : add option to show chart or not on ctf match end
         section.addBoolean("autoupdate", "Activate Auto Update");
 
         
@@ -685,8 +688,8 @@
     SWAM.registerExtension ({
         name: 'CTF_MVPs_Rank',
         id: 'CTF_MVPs_Rank',
-        description: '',
-        version: '1.0.0',
+        description: 'Adds some stats and a chart to the detailed scoreboard',
+        version: '1.0.1',
         settingsProvider: createSettingsProvider(),
         author: 'xplay'
     });
