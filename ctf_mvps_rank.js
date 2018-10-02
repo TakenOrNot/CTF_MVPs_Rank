@@ -563,7 +563,7 @@
 						text: title
 					},
                     tooltips: {
-						mode: index,
+						mode: 'index',
 						intersect: false,
 					},
                     legend: {
