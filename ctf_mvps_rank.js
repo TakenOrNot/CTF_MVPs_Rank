@@ -550,10 +550,10 @@
 						fill: false,
 					}, {
 						label: 'Blue Mean',
-						fill: false,
 						backgroundColor: window.chartColors.blue,
 						borderColor: window.chartColors.blue,
 						data: tbluescorelog,
+                        fill: false
 					}]
 				},
 				options: {
@@ -561,6 +561,10 @@
 					title: {
 						display: false,
 						text: title
+					},
+                    tooltips: {
+						mode: index,
+						intersect: false,
 					},
                     legend: {
                         display: false
