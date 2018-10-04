@@ -214,7 +214,7 @@
         allplayers = Players.getIDs(); 
         allplayersids = Object.keys(allplayers);
         
-        
+        // TODO : swam : forEachPlayer(callback)
         allplayersids.forEach(function(id) {
             console.log(id);
         //});
@@ -290,10 +290,11 @@
             
             // Obsolete : data.pscore = (pcaps * 1000) + ((pcaps * 1000) * pkd) + (pkd * 100) ;
 
+            //data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pcapscore * 100) + (pkd * 50) + (plvl * 5)); 
             
-            
-            data.pscore = Math.trunc(((pcapscore * 1000) * pkd) + (pcapscore * 100) + (pkd * 50) + (plvl * 5)); 
-            
+            // add ((pcaps * pcd) * 500) for rambo love
+            // TODO : add pbounty / 50
+            data.pscore = Math.trunc(((pcd * 1000) * pkd) + ((pcaps * pcd) * 500) + (pcd * 100) + (pkd * 50) + (plvl * 5)); 
             
             //if ($( this ).children( ".name" ).children( ".player" ).hasClass("team-1")){
             if (Players.get(id).team == 1){
@@ -601,6 +602,7 @@
 				div.classList.add('chart-container');
 
 				var canvas = document.createElement('canvas');
+                canvas.setAttribute("id", "mvprankchart");
 				div.appendChild(canvas);
 				container.appendChild(div);
 
