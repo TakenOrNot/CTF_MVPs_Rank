@@ -136,10 +136,10 @@
         let sp = new SettingsProvider(settings, onApply);
     
         let section = sp.addSection("Extension Behavior");
-        // TODO : add option to show chart or not on ctf match end
+        
         section.addBoolean("autoupdate", "Activate Auto Update");
         section.addBoolean("showchartonmatchend", "Show chart on match end");
-        
+        // TODO : add option to hide chart on ctf match start, or do it automaticaly
         
         // we return our SettingsProvider instance
         return sp;
