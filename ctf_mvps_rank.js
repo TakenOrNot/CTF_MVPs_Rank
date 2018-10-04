@@ -10,6 +10,7 @@
         initStyle ();
         window.autoupdate = false;
         window.calcinterval = '';
+        window.showchartonmatchend = false;
         // window.isctf = false;
     }
 
@@ -120,11 +121,16 @@
                 clearInterval(window.calcinterval);
                 $("#autoupdatebtn").css({background: "rgba(0, 247, 0, 0.5)"});
             }
+            
+            if (settings.showchartonmatchend === true){
+                window.showchartonmatchend = true;
+            }
         }
 
         // Default values for the settings
         let settings = {
             autoupdate: false,
+            showchartonmatchend = false
         };
 
         let sp = new SettingsProvider(settings, onApply);
@@ -132,7 +138,7 @@
         let section = sp.addSection("Extension Behavior");
         // TODO : add option to show chart or not on ctf match end
         section.addBoolean("autoupdate", "Activate Auto Update");
-
+        section.addBoolean("showchartonmatchend", "Show chart on match end");
         
         
         // we return our SettingsProvider instance
@@ -675,6 +681,10 @@
         if (window.autoupdate){
             // pause autoupdate interval
             clearInterval(window.calcinterval);
+            
+        }
+        
+        if (window.showchartonmatchend){
             // wait 10 sec
             window.setTimeout(function () {
                 // display ended match chart
@@ -682,6 +692,7 @@
                 $("#chartbtn").click();
             }, 10000); 
         }
+        
         // wait 50 sec
         window.setTimeout(function () {
             // empty arrays 
