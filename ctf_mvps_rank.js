@@ -130,7 +130,7 @@
         // Default values for the settings
         let settings = {
             autoupdate: false,
-            showchartonmatchend = true
+            showchartonmatchend = true,
         };
 
         let sp = new SettingsProvider(settings, onApply);
