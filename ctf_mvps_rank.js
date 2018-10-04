@@ -130,7 +130,7 @@
         // Default values for the settings
         let settings = {
             autoupdate: false,
-            showchartonmatchend = false
+            showchartonmatchend = true
         };
 
         let sp = new SettingsProvider(settings, onApply);
@@ -682,16 +682,18 @@
             // pause autoupdate interval
             clearInterval(window.calcinterval);
             
+            if (window.showchartonmatchend){
+                // wait 10 sec
+                window.setTimeout(function () {
+                    // display ended match chart
+                    $("#viewscore").click();
+                    $("#chartbtn").click();
+                }, 10000); 
+            }
+            
         }
         
-        if (window.showchartonmatchend){
-            // wait 10 sec
-            window.setTimeout(function () {
-                // display ended match chart
-                $("#viewscore").click();
-                $("#chartbtn").click();
-            }, 10000); 
-        }
+        
         
         // wait 50 sec
         window.setTimeout(function () {
