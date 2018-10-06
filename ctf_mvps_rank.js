@@ -125,6 +125,11 @@
             if (settings.showchartonmatchend === true){
                 window.showchartonmatchend = true;
             }
+            if (settings.hidechartonmatchstart === true){
+                window.hidechartonmatchstart = true;
+            }
+            
+            
         }
 
         // Default values for the settings
@@ -139,7 +144,8 @@
         
         section.addBoolean("autoupdate", "Activate Auto Update");
         section.addBoolean("showchartonmatchend", "Show chart on match end");
-        // TODO : add option to hide chart on ctf match start, or do it automaticaly
+        section.addBoolean("hidechartonmatchstart", "Hide chart on match start");
+        
         
         // we return our SettingsProvider instance
         return sp;
@@ -656,7 +662,7 @@
         
     });
     
-    // TODO : have a setting to auto update and if true, hook to detailedScoreUpdate event
+    // NOTE : autoupdate could hook to detailedScoreUpdate event
     // or even better, update the chart only when detailed scoreboard is displayed
     // (on #viewscore clicked / keypress tab)
     // then check every time calcmvp runs if detailed scoreboard is still visible
@@ -669,6 +675,13 @@
         // launch autoupdate interval
         if (window.autoupdate){
              window.calcinterval = setInterval(calcmvps, 60000); 
+        }
+        
+        if (window.hidechartonmatchstart){
+               // hide chart
+               $("#scoredetailed").css({display: "none"});
+            
+               
         }
     }
     
