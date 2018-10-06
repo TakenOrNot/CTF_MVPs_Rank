@@ -136,6 +136,7 @@
         let settings = {
             autoupdate: false,
             showchartonmatchend: true,
+            hidechartonmatchstart: true,
         };
 
         let sp = new SettingsProvider(settings, onApply);
